@@ -49,7 +49,7 @@ class ExtDirectExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'tq_ext_direct_extension';
+        return 'tq_extdirect_extension';
     }
 
     /**
@@ -59,7 +59,7 @@ class ExtDirectExtension extends \Twig_Extension
      */
     public function getApiPath($endpoint, $format = 'js')
     {
-        return $this->generator->generate('tq_extdirect_direct_api', array(
+        return $this->generator->generate('tq_extdirect_api', array(
             'endpoint' => $endpoint,
             '_format'  => $format
         ));

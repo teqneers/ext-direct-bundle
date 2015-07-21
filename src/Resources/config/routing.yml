@@ -1,4 +1,4 @@
-tq_extdirect_direct_api:
+tq_extdirect_api:
     path: /{endpoint}/api.{_format}
     methods: [GET]
     requirements:

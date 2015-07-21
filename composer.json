@@ -19,7 +19,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "TQ\\Bundle\\ExtDirectBundle\\Tests\\": "tests/"
+            "TQ\\Bundle\\ExtDirectBundle\\Tests\\": "tests/Tests/"
         }
     },
     "require": {

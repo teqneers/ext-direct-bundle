@@ -1,6 +1,10 @@
 # ext-direct-bundle
 A Symfony 2 bundle to integrate Sencha Ext JS Ext.direct into a Symfony 2 application
 
+[![Code Coverage](https://scrutinizer-ci.com/g/teqneers/ext-direct-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/teqneers/ext-direct-bundle/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/teqneers/ext-direct-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/teqneers/ext-direct-bundle/?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/55b4ba8c643533001a000602/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55b4ba8c643533001a000602)
+
 ## License
 
 The MIT License (MIT)

@@ -1,0 +1,17 @@
+framework:
+    secret: "Three can keep a secret, if two of them are dead."
+    validation:
+        enabled: true
+    router:
+        resource: "%kernel.root_dir%/TQExtDirectBundleTestRouting.yml"
+        strict_requirements: ~
+
+tq_ext_direct:
+    endpoints:
+        api:
+            directories: ["%kernel.root_dir%/Services"]
+
+
+services:
+    app.direct.test:
+        class: TQ\Bundle\ExtDirectBundle\Tests\Services\Service1

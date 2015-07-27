@@ -1,0 +1,2 @@
+tq_extdirect:
+    resource: "@TQExtDirectBundle/Resources/config/routing.yml"

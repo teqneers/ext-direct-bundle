@@ -107,7 +107,7 @@ class TQExtDirectExtensionTest extends \PHPUnit_Framework_TestCase
      */
     protected function getContainerForConfig(array $configs, $environment, $debug)
     {
-        $rootPath = sys_get_temp_dir() . '/ext-application-bundle';
+        $rootPath = sys_get_temp_dir() . '/ext-direct-bundle';
 
         /** @var UrlGeneratorInterface */
         $urlGenerator = $this->getMock(

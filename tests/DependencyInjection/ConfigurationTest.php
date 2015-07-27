@@ -98,4 +98,35 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             $config
         );
     }
+
+    public function testConfigurationInvalidIfEndpointsIsMissing()
+    {
+        $configuration = $this->getConfiguration(false);
+        $processor     = new Processor();
+
+        $this->setExpectedException(
+            'Symfony\Component\Config\Definition\Exception\InvalidConfigurationException',
+            'The child node "endpoints" at path "tq_ext_direct" must be configured.'
+        );
+
+        $processor->processConfiguration($configuration, array(array()));
+    }
+
+    public function testConfigurationInvalidIfEndpointsIsEmpty()
+    {
+        $configuration = $this->getConfiguration(false);
+        $processor     = new Processor();
+
+        $this->setExpectedException(
+            'Symfony\Component\Config\Definition\Exception\InvalidConfigurationException',
+            'The path "tq_ext_direct.endpoints" should have at least 1 element(s) defined.'
+        );
+
+        $processor->processConfiguration($configuration, array(
+            array(
+                'endpoints' => array()
+
+            )
+        ));
+    }
 }

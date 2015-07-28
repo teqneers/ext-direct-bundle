@@ -11,6 +11,7 @@ namespace TQ\Bundle\ExtDirectBundle\Tests\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use TQ\Bundle\ExtDirectBundle\Controller\ApiController;
+use TQ\ExtDirect\Description\ServiceDescription;
 use TQ\ExtDirect\Http\ServiceDescriptionResponse;
 
 /**
@@ -58,7 +59,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
                      $this->equalTo('http://example.com/api/router'),
                      $this->equalTo('js')
                  )
-                 ->willReturn(new ServiceDescriptionResponse());
+                 ->willReturn(new ServiceDescriptionResponse(new ServiceDescription('http://example.com/api/router')));
 
         /** @var \TQ\ExtDirect\Service\EndpointManager|\PHPUnit_Framework_MockObject_MockObject $endpointManager */
         $endpointManager = $this->getMock(

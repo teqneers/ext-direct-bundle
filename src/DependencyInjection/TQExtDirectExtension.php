@@ -14,9 +14,9 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
-use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 
 /**
@@ -42,6 +42,10 @@ class TQExtDirectExtension extends Extension
 
         if (!$config['debug']) {
             $container->removeDefinition('tq_extdirect.router.listener.stopwatch');
+        } else {
+            $this->addClassesToCompile([
+                'TQ\ExtDirect\Router\EventListener\StopwatchListener'
+            ]);
         }
 
         if ($config['cache'] === 'none') {
@@ -65,20 +69,44 @@ class TQExtDirectExtension extends Extension
                   ->replaceArgument(1, $config['strict_validation']);
         if (!$config['validate_arguments']) {
             $container->removeDefinition('tq_extdirect.router.listener.argument_validation');
+        } else {
+            $this->addClassesToCompile([
+                'TQ\ExtDirect\Router\EventListener\ArgumentValidationListener'
+            ]);
         }
 
         if (!$config['convert_arguments']) {
             $container->removeDefinition('tq_extdirect.router.listener.argument_conversion');
+        } else {
+            $this->addClassesToCompile([
+                'TQ\ExtDirect\Router\EventListener\ArgumentConversionListener'
+            ]);
         }
 
         if (!$config['convert_result']) {
             $container->removeDefinition('tq_extdirect.router.listener.result_conversion');
+        } else {
+            $this->addClassesToCompile([
+                'TQ\ExtDirect\Router\EventListener\ResultConversionListener'
+            ]);
         }
 
         foreach ($config['endpoints'] as $id => $endpoint) {
             $endpoint['id'] = $id;
             $this->loadEndpoints($endpoint, $container);
         }
+
+        $this->addClassesToCompile([
+            'TQ\ExtDirect\Metadata\Driver\AnnotationDriver',
+            'TQ\ExtDirect\Metadata\ActionMetadata',
+            'TQ\ExtDirect\Metadata\MethodMetadata',
+            'TQ\ExtDirect\Description\ActionDescription',
+            'TQ\ExtDirect\Description\MethodDescription',
+            'TQ\ExtDirect\Description\ServiceDescription',
+            'TQ\ExtDirect\Service\MetadataServiceLocator',
+            'TQ\ExtDirect\Service\Endpoint',
+            'TQ\ExtDirect\Router\ServiceReference',
+        ]);
     }
 
     /**

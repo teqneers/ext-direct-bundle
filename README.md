@@ -16,12 +16,14 @@ or add the package to your composer.json file directly.
 
 After you have installed the package, you just need to add the bundle to your AppKernel.php file:
 
-    // in AppKernel::registerBundles()
-    $bundles = array(
-        // ...
-        new TQ\Bundle\ExtDirectBundle\TQExtDirectBundle(),
-        // ...
-    );
+```php
+// in AppKernel::registerBundles()
+$bundles = array(
+    // ...
+    new TQ\Bundle\ExtDirectBundle\TQExtDirectBundle(),
+    // ...
+);
+```
 
 ## Configuration
 
@@ -75,22 +77,24 @@ This enables Ext direct services in all available bundles via the `api` endpoint
 Using the Twig extension provided by the bundle you can easily integrate the *Ext.direct* API definition into your
 application templates.
 
-    <!DOCTYPE HTML>
-    <html lang="en">
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta charset="UTF-8">
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <title>Welcome!</title>
+```twig
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Welcome!</title>
 
-        <!-- Ext JS bootstrap, etc. -->
+    <!-- Ext JS bootstrap, etc. -->
 
-         <script type="text/javascript" src="{{ extDirectApiPath('api') }}"></script>
-    </head>
-    <body>
-    </body>
-    </html>
+     <script type="text/javascript" src="{{ extDirectApiPath('api') }}"></script>
+</head>
+<body>
+</body>
+</html>
+```
 
 ## License
 

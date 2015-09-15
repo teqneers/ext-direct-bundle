@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "55d5c738e024d95f9f04bec5f2293454",
-    "content-hash": "7511397c82b2586578d0346bd7ba6ac3",
+    "hash": "7f68600e0df0f8313d041e889ccaf63e",
+    "content-hash": "19731f9e4625cf36e2e2423888cab694",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1516,12 +1516,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/teqneers/ext-direct.git",
-                "reference": "ff02ae49500f42d6b2099f5ff905137fda8de740"
+                "reference": "885d0276ef6727c722c43b94a43ba9a3b896a3fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/ff02ae49500f42d6b2099f5ff905137fda8de740",
-                "reference": "ff02ae49500f42d6b2099f5ff905137fda8de740",
+                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/885d0276ef6727c722c43b94a43ba9a3b896a3fa",
+                "reference": "885d0276ef6727c722c43b94a43ba9a3b896a3fa",
                 "shasum": ""
             },
             "require": {
@@ -1535,6 +1535,7 @@
                 "symfony/validator": "~2.6|~3.0.0"
             },
             "require-dev": {
+                "phpunit/php-token-stream": "1.4.6",
                 "phpunit/phpunit": "~4.7",
                 "symfony/stopwatch": "~2.6|~3.0.0"
             },
@@ -1557,7 +1558,7 @@
             ],
             "description": "A base component to integrate Sencha Ext JS Ext.direct into a PHP application",
             "homepage": "https://github.com/teqneers/ext-direct",
-            "time": "2015-08-31 11:24:25"
+            "time": "2015-09-15 09:39:30"
         },
         {
             "name": "twig/twig",
@@ -1924,16 +1925,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.7",
+            "version": "1.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "6f1447a60f068c89d345ceee32025a51dd630f1c"
+                "reference": "3ab72c62e550370a6cd5dc873e1a04ab57562f5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/6f1447a60f068c89d345ceee32025a51dd630f1c",
-                "reference": "6f1447a60f068c89d345ceee32025a51dd630f1c",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3ab72c62e550370a6cd5dc873e1a04ab57562f5b",
+                "reference": "3ab72c62e550370a6cd5dc873e1a04ab57562f5b",
                 "shasum": ""
             },
             "require": {
@@ -1969,7 +1970,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-09-14 18:56:12"
+            "time": "2015-08-16 08:51:00"
         },
         {
             "name": "phpunit/phpunit",

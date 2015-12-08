@@ -13,11 +13,21 @@ services:
         arguments:
             - "@tq_extdirect.endpoint_manager"
 
+    tq_extdirect.templating_helper:
+        class: TQ\Bundle\ExtDirectBundle\Helper\TemplatingHelper
+        arguments: [ "@router" ]
+
     tq_extdirect.ext_direct_extension:
         class: TQ\Bundle\ExtDirectBundle\Twig\ExtDirectExtension
-        arguments: [ "@router" ]
+        arguments: [ "@tq_extdirect.templating_helper" ]
         tags:
             - { name: twig.extension }
+
+    tq_extdirect.templating.helper.extdirect_helper:
+        class: TQ\Bundle\ExtJSApplicationBundle\Templating\Helper\ExtDirectHelper
+        arguments: [ "@tq_extdirect.templating_helper" ]
+        tags:
+            - { name: templating.helper, alias: tq_extdirect }
 
     tq_extdirect.endpoint_manager:
         class: TQ\ExtDirect\Service\EndpointManager

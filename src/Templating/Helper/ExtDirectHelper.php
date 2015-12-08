@@ -7,16 +7,16 @@
  * @copyright  Copyright (C) 2015 by TEQneers GmbH & Co. KG
  */
 
-namespace TQ\Bundle\ExtDirectBundle\Twig;
+namespace TQ\Bundle\ExtDirectBundle\Templating\Helper;
 
 use TQ\Bundle\ExtDirectBundle\Helper\TemplatingHelper;
 
 /**
- * Class ExtDirectExtension
+ * Class ExtDirectHelper
  *
- * @package TQ\Bundle\ExtDirectBundle\Twig
+ * @package TQ\Bundle\ExtDirectBundle\Templating\Helper
  */
-class ExtDirectExtension extends \Twig_Extension
+class ExtDirectHelper
 {
     /**
      * @var TemplatingHelper
@@ -34,21 +34,18 @@ class ExtDirectExtension extends \Twig_Extension
     /**
      * {@inheritdoc}
      */
-    public function getFunctions()
+    public function getName()
     {
-        return [
-            new \Twig_SimpleFunction(
-                'extDirectApiPath',
-                [$this->templatingHelper, 'getApiPath']
-            ),
-        ];
+        return 'tq_extdirect';
     }
 
     /**
-     * {@inheritdoc}
+     * @param string $endpoint
+     * @param string $format
+     * @return string
      */
-    public function getName()
+    public function getApiPath($endpoint, $format = 'js')
     {
-        return 'tq_extdirect_extension';
+        return $this->templatingHelper->getApiPath($endpoint, $format);
     }
 }

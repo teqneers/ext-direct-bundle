@@ -2,21 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: stefan
- * Date: 27.07.15
- * Time: 14:13
+ * Date: 08.12.15
+ * Time: 15:12
  */
 
-namespace TQ\Bundle\ExtDirectBundle\Tests\Twig;
+namespace TQ\Bundle\ExtDirectBundle\Tests\Helper;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use TQ\Bundle\ExtDirectBundle\Twig\ExtDirectExtension;
+use TQ\Bundle\ExtDirectBundle\Helper\TemplatingHelper;
 
 /**
- * Class ExtDirectExtensionTest
+ * Class TemplatingHelperTest
  *
- * @package TQ\Bundle\ExtDirectBundle\Tests\Twig
+ * @package TQ\Bundle\ExtDirectBundle\Tests\Helper
  */
-class ExtDirectExtensionTest extends \PHPUnit_Framework_TestCase
+class TemplatingHelperTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetApiPath()
     {
@@ -37,7 +37,7 @@ class ExtDirectExtensionTest extends \PHPUnit_Framework_TestCase
                      )
                      ->willReturn('url');
 
-        $extension = new ExtDirectExtension($urlGenerator);
+        $extension = new TemplatingHelper($urlGenerator);
         $this->assertEquals('url', $extension->getApiPath('api'));
     }
 
@@ -60,7 +60,7 @@ class ExtDirectExtensionTest extends \PHPUnit_Framework_TestCase
                      )
                      ->willReturn('url');
 
-        $extension = new ExtDirectExtension($urlGenerator);
+        $extension = new TemplatingHelper($urlGenerator);
         $this->assertEquals('url', $extension->getApiPath('api', 'json'));
     }
 }

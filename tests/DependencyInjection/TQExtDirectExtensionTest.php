@@ -157,7 +157,6 @@ class TQExtDirectExtensionTest extends \PHPUnit_Framework_TestCase
         $container->set('annotation_reader', $annotationReader);
         $container->set('validator', $validator);
         $container->set('jms_serializer', $serializer);
-        $container->set('service_container', $container);
         $container->registerExtension($extension);
         $extension->load($configs, $container);
         $bundle->build($container);

@@ -5,17 +5,17 @@ services:
     tq_extdirect.ext_direct_api_controller:
         class: TQ\Bundle\ExtDirectBundle\Controller\ApiController
         arguments:
-            - @tq_extdirect.endpoint_manager
-            - @router
+            - "@tq_extdirect.endpoint_manager"
+            - "@router"
 
     tq_extdirect.ext_direct_router_controller:
         class: TQ\Bundle\ExtDirectBundle\Controller\RouterController
         arguments:
-            - @tq_extdirect.endpoint_manager
+            - "@tq_extdirect.endpoint_manager"
 
     tq_extdirect.ext_direct_extension:
         class: TQ\Bundle\ExtDirectBundle\Twig\ExtDirectExtension
-        arguments: [ @router ]
+        arguments: [ "@router" ]
         tags:
             - { name: twig.extension }
 
@@ -30,7 +30,7 @@ services:
         public: false
         abstract: true
         arguments:
-            - @annotation_reader
+            - "@annotation_reader"
             - ~ # directories
 
     tq_extdirect.metadata.cache.file:
@@ -50,9 +50,9 @@ services:
         arguments:
             - ~ # annotation driver
             - Metadata\ClassHierarchyMetadata
-            - %tq_extdirect.debug%
+            - "%tq_extdirect.debug%"
         calls:
-            - [ setCache, [ @?tq_extdirect.metadata.cache ] ]
+            - [ setCache, [ "@?tq_extdirect.metadata.cache" ] ]
 
     tq_extdirect.service_locator:
         class: TQ\ExtDirect\Service\MetadataServiceLocator
@@ -71,12 +71,12 @@ services:
         abstract: true
         arguments:
             - ~ # service locator
-            - @tq_extdirect.naming_strategy
+            - "@tq_extdirect.naming_strategy"
             - ~ # namespace
 
     tq_extdirect.service_factory:
         class: TQ\ExtDirect\Service\ContainerServiceFactory
-        arguments: [ @service_container ]
+        arguments: [ "@service_container" ]
 
     tq_extdirect.service_resolver:
         class: TQ\ExtDirect\Router\ServiceResolver
@@ -84,8 +84,8 @@ services:
         abstract: true
         arguments:
             - ~ # service locator
-            - @tq_extdirect.naming_strategy
-            - @tq_extdirect.service_factory
+            - "@tq_extdirect.naming_strategy"
+            - "@tq_extdirect.service_factory"
 
     tq_extdirect.router:
         class: TQ\ExtDirect\Router\Router
@@ -93,8 +93,8 @@ services:
         abstract: true
         arguments:
             - ~ # service resolver
-            - @?event_dispatcher
-            - %tq_extdirect.debug%
+            - "@?event_dispatcher"
+            - "%tq_extdirect.debug%"
 
     tq_extdirect.endpoint:
         class: TQ\ExtDirect\Service\Endpoint
@@ -104,42 +104,42 @@ services:
             - ~ # id
             - ~ # service description factory
             - ~ # router
-            - @tq_extdirect.router.request_factory
+            - "@tq_extdirect.router.request_factory"
             - ~ # descriptor
-            - %tq_extdirect.debug%
+            - "%tq_extdirect.debug%"
 
     tq_extdirect.router.argument_validator:
         class: TQ\ExtDirect\Router\ArgumentValidator
-        arguments: [ @validator, true ]
+        arguments: [ "@validator", true ]
 
     tq_extdirect.router.listener.argument_validation:
         class: TQ\ExtDirect\Router\EventListener\ArgumentValidationListener
-        arguments: [ @tq_extdirect.router.argument_validator ]
+        arguments: [ "@tq_extdirect.router.argument_validator" ]
         tags:
             - { name: kernel.event_subscriber }
 
     tq_extdirect.router.argument_converter:
         class: TQ\ExtDirect\Router\ArgumentConverter
-        arguments: [ @jms_serializer ]
+        arguments: [ "@jms_serializer" ]
 
     tq_extdirect.router.listener.argument_conversion:
         class: TQ\ExtDirect\Router\EventListener\ArgumentConversionListener
-        arguments: [ @tq_extdirect.router.argument_converter ]
+        arguments: [ "@tq_extdirect.router.argument_converter" ]
         tags:
             - { name: kernel.event_subscriber }
 
     tq_extdirect.router.result_converter:
         class: TQ\ExtDirect\Router\ResultConverter
-        arguments: [ @jms_serializer ]
+        arguments: [ "@jms_serializer" ]
 
     tq_extdirect.router.listener.result_conversion:
         class: TQ\ExtDirect\Router\EventListener\ResultConversionListener
-        arguments: [ @tq_extdirect.router.result_converter ]
+        arguments: [ "@tq_extdirect.router.result_converter" ]
         tags:
             - { name: kernel.event_subscriber }
 
     tq_extdirect.router.listener.stopwatch:
         class: TQ\ExtDirect\Router\EventListener\StopwatchListener
-        arguments: [ @?debug.stopwatch ]
+        arguments: [ "@?debug.stopwatch" ]
         tags:
             - { name: kernel.event_subscriber }

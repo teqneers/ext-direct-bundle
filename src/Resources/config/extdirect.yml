@@ -43,6 +43,13 @@ services:
             - "@annotation_reader"
             - ~ # directories
 
+    tq_extdirect.metadata.class_annotation_driver:
+        class: TQ\ExtDirect\Metadata\Driver\ClassAnnotationDriver
+        public: false
+        abstract: true
+        arguments:
+            - "@annotation_reader"
+
     tq_extdirect.metadata.cache.file:
         class: Metadata\Cache\FileCache
         public: false

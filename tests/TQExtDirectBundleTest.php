@@ -61,7 +61,7 @@ class TQExtDirectBundleTest extends \PHPUnit_Framework_TestCase
         $this->expectOutputString(<<<'OUT'
 var Ext = Ext || {};
 Ext.app = Ext.app || {};
-Ext.app.REMOTING_API = {"type":"remoting","url":"\/api\/router","namespace":"Ext.global","actions":{"TQ.Bundle.ExtDirectBundle.Tests.Services.Service1":[{"name":"methodA","len":1}]}};
+Ext.app.REMOTING_API = {"type":"remoting","url":"\/api\/router","namespace":"Ext.global","actions":{"TQ.Bundle.ExtDirectBundle.Tests.Services.Service1":[{"name":"methodA","len":1}],"TQ.Bundle.ExtDirectBundle.Tests.ExtraService.Service1":[{"name":"methodA","len":1}]}};
 OUT
         );
         $response->prepare($request);

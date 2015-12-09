@@ -10,7 +10,9 @@
 namespace TQ\Bundle\ExtDirectBundle;
 
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use TQ\Bundle\ExtDirectBundle\DependencyInjection\Compiler\AddExtDirectServicePass;
 
 /**
  * Class TQExtDirectBundle
@@ -19,4 +21,13 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class TQExtDirectBundle extends Bundle
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new AddExtDirectServicePass());
+    }
 }

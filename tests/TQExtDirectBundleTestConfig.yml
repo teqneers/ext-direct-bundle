@@ -13,5 +13,9 @@ tq_ext_direct:
 
 
 services:
-    app.direct.test:
+    app.direct.test1:
         class: TQ\Bundle\ExtDirectBundle\Tests\Services\Service1
+    app.direct.test2:
+        class: TQ\Bundle\ExtDirectBundle\Tests\ExtraService\Service1
+        tags:
+            - { name: tq_extdirect.service, endpoint: api }

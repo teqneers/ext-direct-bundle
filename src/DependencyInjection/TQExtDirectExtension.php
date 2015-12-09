@@ -13,6 +13,7 @@ namespace TQ\Bundle\ExtDirectBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
@@ -140,12 +141,26 @@ class TQExtDirectExtension extends Extension
             $directories[] = $endpointDirectory;
         }
 
-        $annotationDriverId = sprintf('tq_extdirect.endpoint.%s.metadata.annotation_driver', $id);
+        $pathAnnotationDriverId = sprintf('tq_extdirect.endpoint.%s.metadata.path_annotation_driver', $id);
         $container->setDefinition(
-            $annotationDriverId,
+            $pathAnnotationDriverId,
             new DefinitionDecorator('tq_extdirect.metadata.path_annotation_driver')
         )
                   ->replaceArgument(1, $directories);
+
+        $classAnnotationDriverId = sprintf('tq_extdirect.endpoint.%s.metadata.class_annotation_driver', $id);
+        $container->setDefinition(
+            $classAnnotationDriverId,
+            new DefinitionDecorator('tq_extdirect.metadata.class_annotation_driver')
+        );
+
+        $annotationDriverId = sprintf('tq_extdirect.endpoint.%s.metadata.annotation_driver', $id);
+        $container->setDefinition(
+            $annotationDriverId,
+            new Definition('Metadata\Driver\DriverChain')
+        )
+                  ->addMethodCall('addDriver', array(new Reference($pathAnnotationDriverId)))
+                  ->addMethodCall('addDriver', array(new Reference($classAnnotationDriverId)));
 
         $metadataFactoryId = sprintf('tq_extdirect.endpoint.%s.metadata.metadata_factory', $id);
         $container->setDefinition(

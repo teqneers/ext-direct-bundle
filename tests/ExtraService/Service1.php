@@ -6,7 +6,7 @@
  * Time: 14:00
  */
 
-namespace TQ\Bundle\ExtDirectBundle\Tests\Services;
+namespace TQ\Bundle\ExtDirectBundle\Tests\ExtraService;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use TQ\ExtDirect\Annotation as Direct;
@@ -14,9 +14,9 @@ use TQ\ExtDirect\Annotation as Direct;
 /**
  * Class Service1
  *
- * @package TQ\Bundle\ExtDirectBundle\Tests\Services
+ * @package TQ\Bundle\ExtDirectBundle\Tests\ExtraService
  *
- * @Direct\Action("app.direct.test1")
+ * @Direct\Action("app.direct.test2")
  */
 class Service1
 {

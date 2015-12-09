@@ -104,6 +104,42 @@ OUT
         $response->sendContent();
     }
 
+    public function testRouterCallServiceAddedViaTag()
+    {
+        $kernel = new AppKernel('prod', false);
+        $kernel->boot();
+
+        /** @var RouterController $controller */
+        $controller = $kernel->getContainer()
+                             ->get('tq_extdirect.ext_direct_router_controller');
+        $request    = new Request(
+            array(),
+            array(),
+            array(),
+            array(),
+            array(),
+            array(),
+            '{"action":"TQ.Bundle.ExtDirectBundle.Tests.ExtraService.Service1","method":"methodA","data":["a"],"type":"rpc","tid":1}'
+        );
+        $request->setMethod(Request::METHOD_POST);
+        $request->headers->set('Content-Type', 'application/json');
+        $response = $controller->routerAction('api', $request);
+
+        $this->assertInstanceOf(
+            'Symfony\Component\HttpFoundation\Response',
+            $response
+        );
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->headers->get('Content-Type'));
+
+        $this->expectOutputString(<<<'OUT'
+{"type":"rpc","tid":1,"action":"TQ.Bundle.ExtDirectBundle.Tests.ExtraService.Service1","method":"methodA","result":"a"}
+OUT
+        );
+        $response->prepare($request);
+        $response->sendContent();
+    }
+
 
     protected function clearTempDir()
     {

@@ -35,8 +35,8 @@ services:
     tq_extdirect.router.request_factory:
         class: TQ\ExtDirect\Router\RequestFactory
 
-    tq_extdirect.metadata.annotation_driver:
-        class: TQ\ExtDirect\Metadata\Driver\AnnotationDriver
+    tq_extdirect.metadata.path_annotation_driver:
+        class: TQ\ExtDirect\Metadata\Driver\PathAnnotationDriver
         public: false
         abstract: true
         arguments:

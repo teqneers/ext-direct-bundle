@@ -143,7 +143,7 @@ class TQExtDirectExtension extends Extension
         $annotationDriverId = sprintf('tq_extdirect.endpoint.%s.metadata.annotation_driver', $id);
         $container->setDefinition(
             $annotationDriverId,
-            new DefinitionDecorator('tq_extdirect.metadata.annotation_driver')
+            new DefinitionDecorator('tq_extdirect.metadata.path_annotation_driver')
         )
                   ->replaceArgument(1, $directories);
 

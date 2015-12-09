@@ -50,6 +50,13 @@ services:
         arguments:
             - "@annotation_reader"
 
+    tq_extdirect.metadata.annotation_driver:
+        class: Metadata\Driver\DriverChain
+        public: false
+        abstract: true
+        arguments:
+            - ~ # drivers
+
     tq_extdirect.metadata.cache.file:
         class: Metadata\Cache\FileCache
         public: false

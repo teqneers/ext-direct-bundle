@@ -48,6 +48,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'strict_validation'  => true,
                 'convert_arguments'  => true,
                 'convert_result'     => true,
+                'default_endpoint'   => null,
                 'endpoints'          => array(
                     'api' => array(
                         'descriptor'    => 'Ext.app.REMOTING_API',
@@ -84,6 +85,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'strict_validation'  => true,
                 'convert_arguments'  => true,
                 'convert_result'     => true,
+                'default_endpoint'   => null,
                 'endpoints'          => array(
                     'api' => array(
                         'descriptor'    => 'Ext.app.REMOTING_API',

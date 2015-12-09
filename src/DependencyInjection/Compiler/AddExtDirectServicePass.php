@@ -24,14 +24,16 @@ class AddExtDirectServicePass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        $tagName = 'tq_extdirect.service';
+        $tagName         = 'tq_extdirect.service';
+        $defaultEndpoint = $container->getParameter('tq_extdirect.endpoint.default');
 
         $classes = [];
         foreach ($container->findTaggedServiceIds($tagName) as $serviceId => $tags) {
             $serviceDefinition = $container->getDefinition($serviceId);
             foreach ($tags as $tag) {
-                if (isset($tag['endpoint'])) {
-                    $classes[$tag['endpoint']][$serviceDefinition->getClass()] = $serviceId;
+                $endpoint = isset($tag['endpoint']) ? $tag['endpoint'] : $defaultEndpoint;
+                if ($endpoint) {
+                    $classes[$endpoint][$serviceDefinition->getClass()] = $serviceId;
                 }
             }
         }

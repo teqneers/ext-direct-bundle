@@ -91,10 +91,17 @@ class TQExtDirectExtension extends Extension
             ]);
         }
 
+        $defaultEndpoint = $config['default_endpoint'];
+        $endpoints       = [];
         foreach ($config['endpoints'] as $id => $endpoint) {
             $endpoint['id'] = $id;
             $this->loadEndpoints($endpoint, $container);
+            $endpoints[] = $id;
         }
+        if (!$defaultEndpoint || !in_array($defaultEndpoint, $endpoints)) {
+            $defaultEndpoint = reset($endpoints);
+        }
+        $container->setParameter('tq_extdirect.endpoint.default', $defaultEndpoint);
 
         $this->addClassesToCompile([
             'TQ\ExtDirect\Metadata\Driver\AnnotationDriver',

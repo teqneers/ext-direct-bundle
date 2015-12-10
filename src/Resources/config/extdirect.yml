@@ -78,8 +78,8 @@ services:
         calls:
             - [ setCache, [ "@?tq_extdirect.metadata.cache" ] ]
 
-    tq_extdirect.service_locator:
-        class: TQ\ExtDirect\Service\MetadataServiceLocator
+    tq_extdirect.service_registry:
+        class: TQ\ExtDirect\Service\DefaultServiceRegistry
         public: false
         abstract: true
         arguments:
@@ -94,7 +94,7 @@ services:
         public: false
         abstract: true
         arguments:
-            - ~ # service locator
+            - ~ # service registry
             - "@tq_extdirect.naming_strategy"
             - ~ # namespace
 
@@ -107,7 +107,7 @@ services:
         public: false
         abstract: true
         arguments:
-            - ~ # service locator
+            - ~ # service registry
             - "@tq_extdirect.naming_strategy"
             - "@tq_extdirect.service_factory"
 

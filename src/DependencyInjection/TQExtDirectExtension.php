@@ -110,7 +110,7 @@ class TQExtDirectExtension extends Extension
             'TQ\ExtDirect\Description\ActionDescription',
             'TQ\ExtDirect\Description\MethodDescription',
             'TQ\ExtDirect\Description\ServiceDescription',
-            'TQ\ExtDirect\Service\MetadataServiceLocator',
+            'TQ\ExtDirect\Service\DefaultServiceRegistry',
             'TQ\ExtDirect\Service\Endpoint',
             'TQ\ExtDirect\Router\ServiceReference',
         ]);
@@ -180,10 +180,10 @@ class TQExtDirectExtension extends Extension
         )
                   ->replaceArgument(0, new Reference($annotationDriverId));
 
-        $serviceLocatorId = sprintf('tq_extdirect.endpoint.%s.locator', $id);
+        $serviceLocatorId = sprintf('tq_extdirect.endpoint.%s.registry', $id);
         $container->setDefinition(
             $serviceLocatorId,
-            new DefinitionDecorator('tq_extdirect.service_locator')
+            new DefinitionDecorator('tq_extdirect.service_registry')
         )
                   ->replaceArgument(0, new Reference($metadataFactoryId));
 

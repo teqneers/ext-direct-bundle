@@ -33,7 +33,9 @@ class AddExtDirectServicePass implements CompilerPassInterface
             foreach ($tags as $tag) {
                 $endpoint = isset($tag['endpoint']) ? $tag['endpoint'] : $defaultEndpoint;
                 if ($endpoint) {
-                    $classes[$endpoint][$serviceDefinition->getClass()] = $serviceId;
+                    $alias = isset($tag['alias']) ? $tag['alias'] : null;
+
+                    $classes[$endpoint][$serviceDefinition->getClass()] = [$serviceId, $alias];
                 }
             }
         }

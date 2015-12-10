@@ -180,9 +180,9 @@ class TQExtDirectExtension extends Extension
         )
                   ->replaceArgument(0, new Reference($annotationDriverId));
 
-        $serviceLocatorId = sprintf('tq_extdirect.endpoint.%s.registry', $id);
+        $serviceRegistryId = sprintf('tq_extdirect.endpoint.%s.registry', $id);
         $container->setDefinition(
-            $serviceLocatorId,
+            $serviceRegistryId,
             new DefinitionDecorator('tq_extdirect.service_registry')
         )
                   ->replaceArgument(0, new Reference($metadataFactoryId));
@@ -192,15 +192,15 @@ class TQExtDirectExtension extends Extension
             $descriptionFactoryId,
             new DefinitionDecorator('tq_extdirect.service_description_factory')
         )
-                  ->replaceArgument(0, new Reference($serviceLocatorId))
-                  ->replaceArgument(2, $endpoint['namespace']);
+                  ->replaceArgument(0, new Reference($serviceRegistryId))
+                  ->replaceArgument(1, $endpoint['namespace']);
 
         $serviceResolverId = sprintf('tq_extdirect.endpoint.%s.service_resolver', $id);
         $container->setDefinition(
             $serviceResolverId,
             new DefinitionDecorator('tq_extdirect.service_resolver')
         )
-                  ->replaceArgument(0, new Reference($serviceLocatorId));
+                  ->replaceArgument(0, new Reference($serviceRegistryId));
 
         $routerId = sprintf('tq_extdirect.endpoint.%s.router', $id);
         $container->setDefinition(

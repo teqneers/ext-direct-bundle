@@ -78,16 +78,17 @@ services:
         calls:
             - [ setCache, [ "@?tq_extdirect.metadata.cache" ] ]
 
+    tq_extdirect.naming_strategy:
+        class: TQ\ExtDirect\Service\DefaultNamingStrategy
+        public: false
+
     tq_extdirect.service_registry:
         class: TQ\ExtDirect\Service\DefaultServiceRegistry
         public: false
         abstract: true
         arguments:
             - ~ # metadata factory
-
-    tq_extdirect.naming_strategy:
-        class: TQ\ExtDirect\Service\DefaultNamingStrategy
-        public: false
+            - "@tq_extdirect.naming_strategy"
 
     tq_extdirect.service_description_factory:
         class: TQ\ExtDirect\Description\ServiceDescriptionFactory
@@ -95,7 +96,6 @@ services:
         abstract: true
         arguments:
             - ~ # service registry
-            - "@tq_extdirect.naming_strategy"
             - ~ # namespace
 
     tq_extdirect.service_factory:
@@ -108,7 +108,6 @@ services:
         abstract: true
         arguments:
             - ~ # service registry
-            - "@tq_extdirect.naming_strategy"
             - "@tq_extdirect.service_factory"
 
     tq_extdirect.router:

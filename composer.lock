@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "52409a87cd7b0db201d04b5190ba7261",
-    "content-hash": "3976b95ecb9049eaaa0393f350444974",
+    "hash": "048e08698b6610a615e94163e5d3b598",
+    "content-hash": "b4179486c589ba7bde2346ec835a1517",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1943,12 +1943,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/teqneers/ext-direct.git",
-                "reference": "0459fe8cd62e8285f9dc1693ddd7406f57f8b92a"
+                "reference": "beebb38d9699aca8d3894d74a84451ac989815b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/0459fe8cd62e8285f9dc1693ddd7406f57f8b92a",
-                "reference": "0459fe8cd62e8285f9dc1693ddd7406f57f8b92a",
+                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/beebb38d9699aca8d3894d74a84451ac989815b9",
+                "reference": "beebb38d9699aca8d3894d74a84451ac989815b9",
                 "shasum": ""
             },
             "require": {
@@ -1984,7 +1984,7 @@
             ],
             "description": "A base component to integrate Sencha Ext JS Ext.direct into a PHP application",
             "homepage": "https://github.com/teqneers/ext-direct",
-            "time": "2015-12-10 15:39:52"
+            "time": "2015-12-10 15:59:50"
         },
         {
             "name": "twig/twig",
@@ -2400,16 +2400,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.20",
+            "version": "4.8.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "7438c43bc2bbb2febe1723eb595b1c49283a26ad"
+                "reference": "b2caaf8947aba5e002d42126723e9d69795f32b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7438c43bc2bbb2febe1723eb595b1c49283a26ad",
-                "reference": "7438c43bc2bbb2febe1723eb595b1c49283a26ad",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b2caaf8947aba5e002d42126723e9d69795f32b4",
+                "reference": "b2caaf8947aba5e002d42126723e9d69795f32b4",
                 "shasum": ""
             },
             "require": {
@@ -2418,7 +2418,7 @@
                 "ext-pcre": "*",
                 "ext-reflection": "*",
                 "ext-spl": "*",
-                "php": "~5.3.3|~5.4|~5.5|~5.6",
+                "php": ">=5.3.3",
                 "phpspec/prophecy": "^1.3.1",
                 "phpunit/php-code-coverage": "~2.1",
                 "phpunit/php-file-iterator": "~1.4",
@@ -2468,7 +2468,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-12-10 07:48:52"
+            "time": "2015-11-30 08:18:59"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

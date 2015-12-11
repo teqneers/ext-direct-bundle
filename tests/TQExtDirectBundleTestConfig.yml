@@ -9,13 +9,13 @@ framework:
 tq_ext_direct:
     endpoints:
         api:
-            directories: ["%kernel.root_dir%/Services"]
-
+            directories: ["%kernel.root_dir%/Services/Sub"]
 
 services:
     app.direct.test1:
-        class: TQ\Bundle\ExtDirectBundle\Tests\Services\Service1
+        class: TQ\Bundle\ExtDirectBundle\Tests\Services\Sub\Service1
+
     app.direct.test2:
-        class: TQ\Bundle\ExtDirectBundle\Tests\ExtraService\Service1
+        class: TQ\Bundle\ExtDirectBundle\Tests\Services\Service1
         tags:
             - { name: tq_extdirect.service, endpoint: api }

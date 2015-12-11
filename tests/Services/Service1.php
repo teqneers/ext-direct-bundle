@@ -16,7 +16,7 @@ use TQ\ExtDirect\Annotation as Direct;
  *
  * @package TQ\Bundle\ExtDirectBundle\Tests\Services
  *
- * @Direct\Action("app.direct.test1")
+ * @Direct\Action()
  */
 class Service1
 {

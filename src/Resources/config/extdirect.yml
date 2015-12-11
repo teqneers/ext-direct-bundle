@@ -35,27 +35,11 @@ services:
     tq_extdirect.router.request_factory:
         class: TQ\ExtDirect\Router\RequestFactory
 
-    tq_extdirect.metadata.path_annotation_driver:
-        class: TQ\ExtDirect\Metadata\Driver\PathAnnotationDriver
-        public: false
-        abstract: true
-        arguments:
-            - "@annotation_reader"
-            - ~ # directories
-
-    tq_extdirect.metadata.class_annotation_driver:
-        class: TQ\ExtDirect\Metadata\Driver\ClassAnnotationDriver
-        public: false
-        abstract: true
-        arguments:
-            - "@annotation_reader"
-
     tq_extdirect.metadata.annotation_driver:
-        class: Metadata\Driver\DriverChain
+        class: TQ\ExtDirect\Metadata\Driver\AnnotationDriver
         public: false
-        abstract: true
         arguments:
-            - ~ # drivers
+            - "@annotation_reader"
 
     tq_extdirect.metadata.cache.file:
         class: Metadata\Cache\FileCache
@@ -70,9 +54,8 @@ services:
     tq_extdirect.metadata_factory:
         class: Metadata\MetadataFactory
         public: false
-        abstract: true
         arguments:
-            - ~ # annotation driver
+            - "@tq_extdirect.metadata.annotation_driver"
             - Metadata\ClassHierarchyMetadata
             - "%tq_extdirect.debug%"
         calls:
@@ -82,12 +65,19 @@ services:
         class: TQ\ExtDirect\Service\DefaultNamingStrategy
         public: false
 
+    tq_extdirect.service_path_loader:
+        class: TQ\ExtDirect\Service\PathServiceLoader
+        public: false
+        abstract: true
+        arguments:
+            - ~ # directories
+
     tq_extdirect.service_registry:
         class: TQ\ExtDirect\Service\DefaultServiceRegistry
         public: false
         abstract: true
         arguments:
-            - ~ # metadata factory
+            - "@tq_extdirect.metadata_factory"
             - "@tq_extdirect.naming_strategy"
 
     tq_extdirect.service_description_factory:

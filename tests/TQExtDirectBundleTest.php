@@ -61,7 +61,7 @@ class TQExtDirectBundleTest extends \PHPUnit_Framework_TestCase
         $this->expectOutputString(<<<'OUT'
 var Ext = Ext || {};
 Ext.app = Ext.app || {};
-Ext.app.REMOTING_API = {"type":"remoting","url":"\/api\/router","namespace":"Ext.global","actions":{"TQ.Bundle.ExtDirectBundle.Tests.Services.Service1":[{"name":"methodA","len":1}],"TQ.Bundle.ExtDirectBundle.Tests.ExtraService.Service1":[{"name":"methodA","len":1}]}};
+Ext.app.REMOTING_API = {"type":"remoting","url":"\/api\/router","namespace":"Ext.global","actions":{"TQ.Bundle.ExtDirectBundle.Tests.Services.Sub.Service1":[{"name":"methodA","len":1}],"TQ.Bundle.ExtDirectBundle.Tests.Services.Service1":[{"name":"methodA","len":1}]}};
 OUT
         );
         $response->prepare($request);
@@ -119,7 +119,7 @@ OUT
             array(),
             array(),
             array(),
-            '{"action":"TQ.Bundle.ExtDirectBundle.Tests.ExtraService.Service1","method":"methodA","data":["a"],"type":"rpc","tid":1}'
+            '{"action":"TQ.Bundle.ExtDirectBundle.Tests.Services.Service1","method":"methodA","data":["a"],"type":"rpc","tid":1}'
         );
         $request->setMethod(Request::METHOD_POST);
         $request->headers->set('Content-Type', 'application/json');
@@ -133,7 +133,7 @@ OUT
         $this->assertEquals('application/json', $response->headers->get('Content-Type'));
 
         $this->expectOutputString(<<<'OUT'
-{"type":"rpc","tid":1,"action":"TQ.Bundle.ExtDirectBundle.Tests.ExtraService.Service1","method":"methodA","result":"a"}
+{"type":"rpc","tid":1,"action":"TQ.Bundle.ExtDirectBundle.Tests.Services.Service1","method":"methodA","result":"a"}
 OUT
         );
         $response->prepare($request);

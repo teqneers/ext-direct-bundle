@@ -110,6 +110,7 @@ class TQExtDirectExtension extends Extension
             'TQ\ExtDirect\Description\ActionDescription',
             'TQ\ExtDirect\Description\MethodDescription',
             'TQ\ExtDirect\Description\ServiceDescription',
+            'TQ\ExtDirect\Description\ServiceDescriptionFactory',
             'TQ\ExtDirect\Service\DefaultServiceRegistry',
             'TQ\ExtDirect\Service\Endpoint',
             'TQ\ExtDirect\Router\ServiceReference',
@@ -147,45 +148,19 @@ class TQExtDirectExtension extends Extension
             $directories[] = $endpointDirectory;
         }
 
-        $pathAnnotationDriverId = sprintf('tq_extdirect.endpoint.%s.metadata.path_annotation_driver', $id);
+        $pathLoaderId = sprintf('tq_extdirect.endpoint.%s.service_path_loader', $id);
         $container->setDefinition(
-            $pathAnnotationDriverId,
-            new DefinitionDecorator('tq_extdirect.metadata.path_annotation_driver')
+            $pathLoaderId,
+            new DefinitionDecorator('tq_extdirect.service_path_loader')
         )
-                  ->replaceArgument(1, $directories);
-
-        $classAnnotationDriverId = sprintf('tq_extdirect.endpoint.%s.metadata.class_annotation_driver', $id);
-        $container->setDefinition(
-            $classAnnotationDriverId,
-            new DefinitionDecorator('tq_extdirect.metadata.class_annotation_driver')
-        );
-
-        $annotationDriverId = sprintf('tq_extdirect.endpoint.%s.metadata.annotation_driver', $id);
-        $container->setDefinition(
-            $annotationDriverId,
-            new DefinitionDecorator('tq_extdirect.metadata.annotation_driver')
-        )
-                  ->replaceArgument(
-                      0,
-                      array(
-                          new Reference($pathAnnotationDriverId),
-                          new Reference($classAnnotationDriverId)
-                      )
-                  );
-
-        $metadataFactoryId = sprintf('tq_extdirect.endpoint.%s.metadata.metadata_factory', $id);
-        $container->setDefinition(
-            $metadataFactoryId,
-            new DefinitionDecorator('tq_extdirect.metadata_factory')
-        )
-                  ->replaceArgument(0, new Reference($annotationDriverId));
+                  ->replaceArgument(0, $directories);
 
         $serviceRegistryId = sprintf('tq_extdirect.endpoint.%s.registry', $id);
         $container->setDefinition(
             $serviceRegistryId,
             new DefinitionDecorator('tq_extdirect.service_registry')
         )
-                  ->replaceArgument(0, new Reference($metadataFactoryId));
+                  ->addMethodCall('importServices', [new Reference($pathLoaderId)]);
 
         $descriptionFactoryId = sprintf('tq_extdirect.endpoint.%s.description_factory', $id);
         $container->setDefinition(

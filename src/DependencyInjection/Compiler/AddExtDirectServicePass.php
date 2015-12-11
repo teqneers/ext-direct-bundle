@@ -40,15 +40,15 @@ class AddExtDirectServicePass implements CompilerPassInterface
             }
         }
 
-        $classAnnotationDriverIdTemplate = 'tq_extdirect.endpoint.%s.metadata.class_annotation_driver';
+        $registryIdTemplate = 'tq_extdirect.endpoint.%s.registry';
         foreach ($classes as $endpoint => $endPointClasses) {
-            $classAnnotationDriverId = sprintf($classAnnotationDriverIdTemplate, $endpoint);
-            if (!$container->hasDefinition($classAnnotationDriverId)) {
+            $registryId = sprintf($registryIdTemplate, $endpoint);
+            if (!$container->hasDefinition($registryId)) {
                 continue;
             }
 
-            $classAnnotationDriverDefinition = $container->getDefinition($classAnnotationDriverId);
-            $classAnnotationDriverDefinition->addMethodCall('addClasses', array($endPointClasses));
+            $registry = $container->getDefinition($registryId);
+            $registry->addMethodCall('addServices', array($endPointClasses));
         }
     }
 }

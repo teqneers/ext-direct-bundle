@@ -48,6 +48,10 @@ class TQExtDirectExtension extends Extension
             ]);
         }
 
+        if (!$config['debug'] || !$container->getParameter('kernel.debug')) {
+            $container->removeDefinition('tq_extdirect.router.listener.dump');
+        }
+
         if ($config['cache'] === 'none') {
             $container->removeAlias('tq_extdirect.metadata.cache');
         } elseif ($config['cache'] === 'file') {

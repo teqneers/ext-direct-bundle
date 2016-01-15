@@ -156,3 +156,9 @@ services:
         arguments: [ "@?debug.stopwatch" ]
         tags:
             - { name: kernel.event_subscriber }
+
+    tq_extdirect.router.listener.dump:
+        class: TQ\Bundle\ExtDirectBundle\Router\DumpListener
+        arguments: [ "@?data_collector.dump" ]
+        tags:
+            - { name: kernel.event_subscriber }

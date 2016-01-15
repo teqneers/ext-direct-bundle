@@ -1995,12 +1995,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/teqneers/ext-direct.git",
-                "reference": "9814507c65fd79e55560f8666e924394b3d60ee4"
+                "reference": "8b8f889220c59ca9314ff95cc7623133782199f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/9814507c65fd79e55560f8666e924394b3d60ee4",
-                "reference": "9814507c65fd79e55560f8666e924394b3d60ee4",
+                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/8b8f889220c59ca9314ff95cc7623133782199f0",
+                "reference": "8b8f889220c59ca9314ff95cc7623133782199f0",
                 "shasum": ""
             },
             "require": {
@@ -2036,7 +2036,7 @@
             ],
             "description": "A base component to integrate Sencha Ext JS Ext.direct into a PHP application",
             "homepage": "https://github.com/teqneers/ext-direct",
-            "time": "2015-12-17 14:01:46"
+            "time": "2016-01-15 14:27:13"
         },
         {
             "name": "twig/twig",

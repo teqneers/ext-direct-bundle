@@ -69,17 +69,19 @@ class TQExtDirectExtension extends Extension
             $container->setAlias('tq_extdirect.metadata.cache', new Alias($config['cache'], false));
         }
 
-        $container->getDefinition('tq_extdirect.router.argument_validator')
-                  ->replaceArgument(1, $config['strict_validation']);
         if (!$config['validate_arguments']) {
+            $container->removeDefinition('tq_extdirect.router.argument_validator');
             $container->removeDefinition('tq_extdirect.router.listener.argument_validation');
         } else {
+            $container->getDefinition('tq_extdirect.router.argument_validator')
+                      ->replaceArgument(1, $config['strict_validation']);
             $this->addClassesToCompile([
                 'TQ\ExtDirect\Router\EventListener\ArgumentValidationListener'
             ]);
         }
 
         if (!$config['convert_arguments']) {
+            $container->removeDefinition('tq_extdirect.router.argument_converter');
             $container->removeDefinition('tq_extdirect.router.listener.argument_conversion');
         } else {
             $this->addClassesToCompile([
@@ -87,9 +89,31 @@ class TQExtDirectExtension extends Extension
             ]);
         }
 
+        if (!$config['enable_authorization']
+            || !class_exists('Symfony\Component\ExpressionLanguage\ExpressionLanguage')
+            || !class_exists('Symfony\Component\Security\Core\Authorization\ExpressionLanguage')
+            || !$container->hasDefinition('security.token_storage')
+        ) {
+            $container->removeDefinition('tq_extdirect.router.authorization_checker');
+            $container->removeDefinition('tq_extdirect.router.listener.authorization');
+        } else {
+            $this->addClassesToCompile([
+                'TQ\ExtDirect\Router\EventListener\AuthorizationListener'
+            ]);
+        }
+
         if (!$config['convert_result']) {
+            $container->removeDefinition('tq_extdirect.router.result_converter');
             $container->removeDefinition('tq_extdirect.router.listener.result_conversion');
         } else {
+            if ($container->hasDefinition('sensio_framework_extra.security.expression_language.default')) {
+                $container->getDefinition('tq_extdirect.router.authorization_checker')
+                          ->replaceArgument(
+                              0,
+                              new Reference('sensio_framework_extra.security.expression_language.default')
+                          );
+            }
+
             $this->addClassesToCompile([
                 'TQ\ExtDirect\Router\EventListener\ResultConversionListener'
             ]);

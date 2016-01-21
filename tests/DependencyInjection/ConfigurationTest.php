@@ -41,15 +41,16 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             array(
-                'debug'              => false,
-                'cache'              => 'file',
-                'file_cache_dir'     => '%kernel.cache_dir%/tq_ext_direct',
-                'validate_arguments' => true,
-                'strict_validation'  => true,
-                'convert_arguments'  => true,
-                'convert_result'     => true,
-                'default_endpoint'   => null,
-                'endpoints'          => array(
+                'debug'                => false,
+                'cache'                => 'file',
+                'file_cache_dir'       => '%kernel.cache_dir%/tq_ext_direct',
+                'validate_arguments'   => true,
+                'strict_validation'    => true,
+                'convert_arguments'    => true,
+                'enable_authorization' => true,
+                'convert_result'       => true,
+                'default_endpoint'     => null,
+                'endpoints'            => array(
                     'api' => array(
                         'descriptor'    => 'Ext.app.REMOTING_API',
                         'namespace'     => 'Ext.global',
@@ -78,15 +79,16 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             array(
-                'debug'              => true,
-                'cache'              => 'file',
-                'file_cache_dir'     => '%kernel.cache_dir%/tq_ext_direct',
-                'validate_arguments' => true,
-                'strict_validation'  => true,
-                'convert_arguments'  => true,
-                'convert_result'     => true,
-                'default_endpoint'   => null,
-                'endpoints'          => array(
+                'debug'                => true,
+                'cache'                => 'file',
+                'file_cache_dir'       => '%kernel.cache_dir%/tq_ext_direct',
+                'validate_arguments'   => true,
+                'strict_validation'    => true,
+                'convert_arguments'    => true,
+                'enable_authorization' => true,
+                'convert_result'       => true,
+                'default_endpoint'     => null,
+                'endpoints'            => array(
                     'api' => array(
                         'descriptor'    => 'Ext.app.REMOTING_API',
                         'namespace'     => 'Ext.global',

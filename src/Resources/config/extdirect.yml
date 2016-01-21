@@ -123,6 +123,7 @@ services:
 
     tq_extdirect.router.argument_validator:
         class: TQ\ExtDirect\Router\ArgumentValidator
+        public: false
         arguments: [ "@validator", true ]
 
     tq_extdirect.router.listener.argument_validation:
@@ -133,6 +134,7 @@ services:
 
     tq_extdirect.router.argument_converter:
         class: TQ\ExtDirect\Router\ArgumentConverter
+        public: false
         arguments: [ "@jms_serializer" ]
 
     tq_extdirect.router.listener.argument_conversion:
@@ -141,8 +143,25 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
+    tq_extdirect.router.authorization_checker:
+        class: TQ\ExtDirect\Router\AuthorizationChecker
+        public: false
+        arguments:
+            - "@?security.expression_language"
+            - "@?security.authentication.trust_resolver"
+            - "@?security.token_storage"
+            - "@?security.authorization_checker"
+            - "@?security.role_hierarchy"
+
+    tq_extdirect.router.listener.authorization:
+        class: TQ\ExtDirect\Router\EventListener\AuthorizationListener
+        arguments: [ "@tq_extdirect.router.authorization_checker" ]
+        tags:
+            - { name: kernel.event_subscriber }
+
     tq_extdirect.router.result_converter:
         class: TQ\ExtDirect\Router\ResultConverter
+        public: false
         arguments: [ "@jms_serializer" ]
 
     tq_extdirect.router.listener.result_conversion:

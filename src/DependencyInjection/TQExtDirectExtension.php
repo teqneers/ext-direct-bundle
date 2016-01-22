@@ -92,7 +92,7 @@ class TQExtDirectExtension extends Extension
         if (!$config['enable_authorization']
             || !class_exists('Symfony\Component\ExpressionLanguage\ExpressionLanguage')
             || !class_exists('Symfony\Component\Security\Core\Authorization\ExpressionLanguage')
-            || !$container->hasDefinition('security.token_storage')
+            || !array_key_exists('SecurityBundle', $container->getParameter('kernel.bundles'))
         ) {
             $container->removeDefinition('tq_extdirect.router.authorization_checker');
             $container->removeDefinition('tq_extdirect.router.listener.authorization');

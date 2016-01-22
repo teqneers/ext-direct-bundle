@@ -92,7 +92,6 @@ class TQExtDirectExtension extends Extension
         if (!$config['enable_authorization']
             || !class_exists('Symfony\Component\ExpressionLanguage\ExpressionLanguage')
             || !class_exists('Symfony\Component\Security\Core\Authorization\ExpressionLanguage')
-            || !array_key_exists('SecurityBundle', $container->getParameter('kernel.bundles'))
         ) {
             $container->removeDefinition('tq_extdirect.router.authorization_checker');
             $container->removeDefinition('tq_extdirect.router.listener.authorization');
@@ -106,14 +105,6 @@ class TQExtDirectExtension extends Extension
             $container->removeDefinition('tq_extdirect.router.result_converter');
             $container->removeDefinition('tq_extdirect.router.listener.result_conversion');
         } else {
-            if ($container->hasDefinition('sensio_framework_extra.security.expression_language.default')) {
-                $container->getDefinition('tq_extdirect.router.authorization_checker')
-                          ->replaceArgument(
-                              0,
-                              new Reference('sensio_framework_extra.security.expression_language.default')
-                          );
-            }
-
             $this->addClassesToCompile([
                 'TQ\ExtDirect\Router\EventListener\ResultConversionListener'
             ]);

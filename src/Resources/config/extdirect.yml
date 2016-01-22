@@ -147,10 +147,10 @@ services:
         class: TQ\ExtDirect\Router\AuthorizationChecker
         public: false
         arguments:
-            - "@?security.expression_language"
-            - "@?security.authentication.trust_resolver"
-            - "@?security.token_storage"
-            - "@?security.authorization_checker"
+            - "@security.expression_language"
+            - "@security.authentication.trust_resolver"
+            - "@security.token_storage"
+            - "@security.authorization_checker"
             - "@?security.role_hierarchy"
 
     tq_extdirect.router.listener.authorization:

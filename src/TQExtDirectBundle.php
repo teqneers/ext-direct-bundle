@@ -14,6 +14,7 @@ use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use TQ\Bundle\ExtDirectBundle\DependencyInjection\Compiler\AddExtDirectServicePass;
+use TQ\Bundle\ExtDirectBundle\DependencyInjection\Compiler\ValidateSecurityPass;
 
 /**
  * Class TQExtDirectBundle
@@ -30,5 +31,6 @@ class TQExtDirectBundle extends Bundle
         parent::build($container);
 
         $container->addCompilerPass(new AddExtDirectServicePass(), PassConfig::TYPE_OPTIMIZE);
+        $container->addCompilerPass(new ValidateSecurityPass());
     }
 }

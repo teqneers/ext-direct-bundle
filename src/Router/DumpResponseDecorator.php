@@ -8,48 +8,39 @@
 
 namespace TQ\Bundle\ExtDirectBundle\Router;
 
-use TQ\ExtDirect\Router\AbstractResponse;
+use TQ\ExtDirect\Router\AbstractResponseDecorator;
+use TQ\ExtDirect\Router\Response;
 
 /**
  * Class DumpResponseDecorator
  *
  * @package TQ\Bundle\ExtDirectBundle\Router
  */
-class DumpResponseDecorator extends AbstractResponse
+class DumpResponseDecorator extends AbstractResponseDecorator
 {
-    /**
-     * @var AbstractResponse
-     */
-    private $decorated;
-
     /**
      * @var array
      */
     private $dumps;
 
     /**
-     * @param AbstractResponse $decorated
-     * @param array            $dumps
+     * @param Response $decorated
+     * @param array    $dumps
      */
-    public function __construct(AbstractResponse $decorated, array $dumps)
+    public function __construct(Response $decorated, array $dumps)
     {
-        parent::__construct($decorated->getType());
-        $this->decorated = $decorated;
-        $this->dumps     = $dumps;
+        parent::__construct($decorated);
+        $this->dumps = $dumps;
     }
+
 
     /**
      * {@inheritdoc}
      */
-    function jsonSerialize()
+    protected function serializeAdditionalData()
     {
-        $serialized = $this->decorated->jsonSerialize();
-
-        return array_merge(
-            $serialized,
-            [
-                '__dump' => $this->dumps
-            ]
-        );
+        return [
+            '__dump' => $this->dumps
+        ];
     }
 }

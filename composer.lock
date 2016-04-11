@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4bf043d02515390a11dd8ecb31affa89",
-    "content-hash": "e2b4a9f06fb5e1310c9e733f461a4aba",
+    "hash": "e78f92885524a56b33b9752f45a103d3",
+    "content-hash": "514c8e51eb057d14ee695a04109d8de4",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2067,12 +2067,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/teqneers/ext-direct.git",
-                "reference": "c52bb8a21dfcf3377ecd56e7936c94ce772cfb71"
+                "reference": "44823640102981a110de6ed7c9d23b1ff0e023d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/c52bb8a21dfcf3377ecd56e7936c94ce772cfb71",
-                "reference": "c52bb8a21dfcf3377ecd56e7936c94ce772cfb71",
+                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/44823640102981a110de6ed7c9d23b1ff0e023d1",
+                "reference": "44823640102981a110de6ed7c9d23b1ff0e023d1",
                 "shasum": ""
             },
             "require": {
@@ -2097,7 +2097,11 @@
                     "TQ\\ExtDirect\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "TQ\\ExtDirect\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -2110,7 +2114,11 @@
             ],
             "description": "A base component to integrate Sencha Ext JS Ext.direct into a PHP application",
             "homepage": "https://github.com/teqneers/ext-direct",
-            "time": "2016-03-01 14:44:25"
+            "support": {
+                "source": "https://github.com/teqneers/ext-direct/tree/master",
+                "issues": "https://github.com/teqneers/ext-direct/issues"
+            },
+            "time": "2016-04-11 13:11:07"
         },
         {
             "name": "twig/twig",

@@ -2069,12 +2069,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/teqneers/ext-direct.git",
-                "reference": "af609a72f67ebe5cb2cd59b7c4853d992f14db9c"
+                "reference": "e3ccf879551dc1588bb459d28940bffa7440e16c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/af609a72f67ebe5cb2cd59b7c4853d992f14db9c",
-                "reference": "af609a72f67ebe5cb2cd59b7c4853d992f14db9c",
+                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/e3ccf879551dc1588bb459d28940bffa7440e16c",
+                "reference": "e3ccf879551dc1588bb459d28940bffa7440e16c",
                 "shasum": ""
             },
             "require": {
@@ -2120,7 +2120,7 @@
                 "source": "https://github.com/teqneers/ext-direct/tree/master",
                 "issues": "https://github.com/teqneers/ext-direct/issues"
             },
-            "time": "2016-05-10 15:08:26"
+            "time": "2016-05-10 15:26:37"
         },
         {
             "name": "twig/twig",

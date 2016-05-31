@@ -892,16 +892,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "b2f4d40a6ed0f6ace59aa3c88d08a94eb9aef811"
+                "reference": "383110341e8f47ae972da3a29503b099831549e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/b2f4d40a6ed0f6ace59aa3c88d08a94eb9aef811",
-                "reference": "b2f4d40a6ed0f6ace59aa3c88d08a94eb9aef811",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/383110341e8f47ae972da3a29503b099831549e1",
+                "reference": "383110341e8f47ae972da3a29503b099831549e1",
                 "shasum": ""
             },
             "require": {
@@ -921,7 +921,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -948,20 +948,20 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-09 18:14:44"
+            "time": "2016-05-24 10:06:56"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "807dde98589f9b2b00624dca326740380d78dbbc"
+                "reference": "0343b2cedd0edb26cdc791212a8eb645c406018b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/807dde98589f9b2b00624dca326740380d78dbbc",
-                "reference": "807dde98589f9b2b00624dca326740380d78dbbc",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/0343b2cedd0edb26cdc791212a8eb645c406018b",
+                "reference": "0343b2cedd0edb26cdc791212a8eb645c406018b",
                 "shasum": ""
             },
             "require": {
@@ -981,7 +981,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -1008,20 +1008,20 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-05 06:56:13"
+            "time": "2016-04-12 18:27:47"
         },
         {
             "name": "symfony/expression-language",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/expression-language.git",
-                "reference": "98466efcae5b9e8a5dd45b300b0ff54eaa6f3988"
+                "reference": "9db6f176064fbd3f5ced4865be60b335b6a12723"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/expression-language/zipball/98466efcae5b9e8a5dd45b300b0ff54eaa6f3988",
-                "reference": "98466efcae5b9e8a5dd45b300b0ff54eaa6f3988",
+                "url": "https://api.github.com/repos/symfony/expression-language/zipball/9db6f176064fbd3f5ced4865be60b335b6a12723",
+                "reference": "9db6f176064fbd3f5ced4865be60b335b6a12723",
                 "shasum": ""
             },
             "require": {
@@ -1030,7 +1030,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -1057,7 +1057,7 @@
             ],
             "description": "Symfony ExpressionLanguage Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-10 10:34:12"
+            "time": "2016-03-10 11:16:56"
         },
         {
             "name": "symfony/filesystem",
@@ -1251,16 +1251,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "18b24bc32d2495ae79d76e777368786a6536fe31"
+                "reference": "83c47b60cdcc0a79651c4e68a3420a54d1eba6e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/18b24bc32d2495ae79d76e777368786a6536fe31",
-                "reference": "18b24bc32d2495ae79d76e777368786a6536fe31",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/83c47b60cdcc0a79651c4e68a3420a54d1eba6e1",
+                "reference": "83c47b60cdcc0a79651c4e68a3420a54d1eba6e1",
                 "shasum": ""
             },
             "require": {
@@ -1273,7 +1273,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -1300,7 +1300,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-04-12 18:09:53"
+            "time": "2016-05-13 18:06:41"
         },
         {
             "name": "symfony/http-kernel",
@@ -1806,16 +1806,16 @@
         },
         {
             "name": "symfony/security",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security.git",
-                "reference": "787f7af77f69aa72028a3865f3689a6f18995c96"
+                "reference": "3b89f41a6a9e015da1bd008be13c985349f86e7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security/zipball/787f7af77f69aa72028a3865f3689a6f18995c96",
-                "reference": "787f7af77f69aa72028a3865f3689a6f18995c96",
+                "url": "https://api.github.com/repos/symfony/security/zipball/3b89f41a6a9e015da1bd008be13c985349f86e7b",
+                "reference": "3b89f41a6a9e015da1bd008be13c985349f86e7b",
                 "shasum": ""
             },
             "require": {
@@ -1838,7 +1838,7 @@
                 "psr/log": "~1.0",
                 "symfony/expression-language": "~2.8|~3.0",
                 "symfony/finder": "~2.8|~3.0",
-                "symfony/ldap": "~2.8|~3.0",
+                "symfony/ldap": "~3.1",
                 "symfony/polyfill-intl-icu": "~1.0",
                 "symfony/routing": "~2.8|~3.0",
                 "symfony/validator": "~2.8|~3.0"
@@ -1853,7 +1853,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -1880,7 +1880,7 @@
             ],
             "description": "Symfony Security Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-09 19:35:23"
+            "time": "2016-05-26 02:36:36"
         },
         {
             "name": "symfony/stopwatch",
@@ -2052,16 +2052,16 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "dbf5925e3a53c2df3f711a8ef9d200b6dfef34c0"
+                "reference": "6456ba460f8395e41652b10acb3d61001ac928e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/dbf5925e3a53c2df3f711a8ef9d200b6dfef34c0",
-                "reference": "dbf5925e3a53c2df3f711a8ef9d200b6dfef34c0",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/6456ba460f8395e41652b10acb3d61001ac928e9",
+                "reference": "6456ba460f8395e41652b10acb3d61001ac928e9",
                 "shasum": ""
             },
             "require": {
@@ -2073,6 +2073,7 @@
                 "doctrine/annotations": "~1.0",
                 "doctrine/cache": "~1.0",
                 "egulias/email-validator": "~1.2,>=1.2.1",
+                "symfony/cache": "~3.1",
                 "symfony/config": "~2.8|~3.0",
                 "symfony/expression-language": "~2.8|~3.0",
                 "symfony/http-foundation": "~2.8|~3.0",
@@ -2083,6 +2084,7 @@
                 "doctrine/annotations": "For using the annotation mapping. You will also need doctrine/cache.",
                 "doctrine/cache": "For using the default cached annotation reader and metadata cache.",
                 "egulias/email-validator": "Strict (RFC compliant) email validation",
+                "psr/cache-implementation": "For using the metadata cache.",
                 "symfony/config": "",
                 "symfony/expression-language": "For using the Expression validator",
                 "symfony/http-foundation": "",
@@ -2093,7 +2095,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -2120,7 +2122,7 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
-            "time": "2016-04-20 11:35:44"
+            "time": "2016-05-24 10:06:56"
         },
         {
             "name": "teqneers/ext-direct",
@@ -2128,29 +2130,29 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/teqneers/ext-direct.git",
-                "reference": "e3ccf879551dc1588bb459d28940bffa7440e16c"
+                "reference": "dd7bd6cce7a846a4f4c57823d63be28a7a516551"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/e3ccf879551dc1588bb459d28940bffa7440e16c",
-                "reference": "e3ccf879551dc1588bb459d28940bffa7440e16c",
+                "url": "https://api.github.com/repos/teqneers/ext-direct/zipball/dd7bd6cce7a846a4f4c57823d63be28a7a516551",
+                "reference": "dd7bd6cce7a846a4f4c57823d63be28a7a516551",
                 "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "~1.0",
                 "jms/metadata": "~1.5",
-                "jms/serializer": "~1.0",
-                "php": ">=5.5.0",
-                "symfony/dependency-injection": "~2.6|~3.0.0",
-                "symfony/event-dispatcher": "~2.6|~3.0.0",
-                "symfony/expression-language": "~2.6|~3.0.0",
-                "symfony/http-foundation": "~2.6|~3.0.0",
-                "symfony/security-core": "~2.6|~3.0.0",
-                "symfony/validator": "~2.6|~3.0.0"
+                "jms/serializer": "~1.1",
+                "php": ">=5.5.9",
+                "symfony/dependency-injection": "~2.8|~3.0",
+                "symfony/event-dispatcher": "~2.8|~3.0",
+                "symfony/expression-language": "~2.8|~3.0",
+                "symfony/http-foundation": "~2.8|~3.0",
+                "symfony/security-core": "~2.8|~3.0",
+                "symfony/validator": "~2.8|~3.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.8,!=4.8.20|~5.1",
-                "symfony/stopwatch": "~2.6|~3.0.0"
+                "symfony/stopwatch": "~2.8|~3.0"
             },
             "type": "library",
             "autoload": {
@@ -2179,7 +2181,7 @@
                 "source": "https://github.com/teqneers/ext-direct/tree/master",
                 "issues": "https://github.com/teqneers/ext-direct/issues"
             },
-            "time": "2016-05-10 15:26:37"
+            "time": "2016-05-31 13:12:00"
         },
         {
             "name": "twig/twig",
@@ -3099,23 +3101,23 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",
-                "reference": "286da713a67a5ff48e5ff7dac7a50a6d312d6854"
+                "reference": "29630e6e984cb5634cd25ab59793c6c460c26ba0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/286da713a67a5ff48e5ff7dac7a50a6d312d6854",
-                "reference": "286da713a67a5ff48e5ff7dac7a50a6d312d6854",
+                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/29630e6e984cb5634cd25ab59793c6c460c26ba0",
+                "reference": "29630e6e984cb5634cd25ab59793c6c460c26ba0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9",
                 "symfony/http-kernel": "~2.8|~3.0",
                 "symfony/polyfill-php70": "~1.0",
-                "symfony/security": "~2.8|~3.0"
+                "symfony/security": "~3.1"
             },
             "require-dev": {
                 "doctrine/doctrine-bundle": "~1.4",
@@ -3141,7 +3143,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -3168,7 +3170,7 @@
             ],
             "description": "Symfony SecurityBundle",
             "homepage": "https://symfony.com",
-            "time": "2016-03-16 16:19:48"
+            "time": "2016-05-26 02:36:36"
         },
         {
             "name": "symfony/yaml",

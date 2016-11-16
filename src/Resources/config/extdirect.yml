@@ -181,3 +181,24 @@ services:
         arguments: [ "@?data_collector.dump" ]
         tags:
             - { name: kernel.event_subscriber }
+
+    tq_extdirect.router.request_logger:
+        class: TQ\Bundle\ExtDirectBundle\Router\RequestLogger
+        public: false
+
+    tq_extdirect.router.listener.request_log:
+        class: TQ\Bundle\ExtDirectBundle\Router\RequestLogListener
+        arguments:
+            - "@tq_extdirect.router.request_logger"
+            - "@?logger"
+        tags:
+            - { name: kernel.event_subscriber }
+            - { name: monolog.logger, channel: tq_extdirect }
+
+    tq_extdirect.data_collector.request_collector:
+        class: TQ\Bundle\ExtDirectBundle\DataCollector\RequestCollector
+        public: false
+        arguments:
+            - "@tq_extdirect.router.request_logger"
+        tags:
+            - { name: data_collector, id: tq_extdirect.request_collector, template: TQExtDirectBundle:data_collector:request_collector.html.twig }

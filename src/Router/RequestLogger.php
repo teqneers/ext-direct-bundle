@@ -59,7 +59,7 @@ class RequestLogger
 
     /**
      * @param bool $asString
-     * @return array|null
+     * @return array|string|null
      */
     public function getRequest($asString = true)
     {
@@ -71,7 +71,7 @@ class RequestLogger
 
     /**
      * @param bool $asString
-     * @return array|null
+     * @return array|string|null
      */
     public function getResponse($asString = true)
     {

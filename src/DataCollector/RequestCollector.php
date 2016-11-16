@@ -9,6 +9,8 @@
 
 namespace TQ\Bundle\ExtDirectBundle\DataCollector;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 use TQ\Bundle\ExtDirectBundle\Router\RequestLogger;
 
@@ -32,6 +34,47 @@ class RequestCollector extends DataCollector
         $this->requestLogger = $requestLogger;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function collect(Request $request, Response $response, \Exception $exception = null)
+    {
+        $this->data['request']  = $this->requestLogger->getRequest(false);
+        $this->data['response'] = $this->requestLogger->getResponse(false);
+        $this->data['time']     = $this->requestLogger->getElapsedTime();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isExtDirectRequest()
+    {
+        return $this->data['request'] !== null;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTime()
+    {
+        return $this->data['time'];
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getRequest()
+    {
+        return $this->data['request'];
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getResponse()
+    {
+        return $this->data['response'];
+    }
 
     /**
      * {@inheritdoc}

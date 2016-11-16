@@ -1,14 +1,15 @@
 {% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
 
 {% block toolbar %}
+    {% set is_ext_direct = collector.extDirectRequest %}
     {% set icon %}
-        {{ include('TQExtDirectBundle:data_collector:ext_direct_icon.html.twig') }}
+        {{ include('TQExtDirectBundle:data_collector:icon.svg') }}
     {% endset %}
 
     {% set text %}
         <div class="sf-toolbar-info-piece">
-            <b>Test</b>
-            <span class="sf-toolbar-status">Test</span>
+            <b>Ext.direct</b>
+            <span class="sf-toolbar-status sf-toolbar-status-{{ is_ext_direct ? 'green' : 'red' }}">{{ is_ext_direct ? 'Yes' : 'No' }}</span>
         </div>
     {% endset %}
 
@@ -17,14 +18,27 @@
 
 
 {% block menu %}
-    <span class="label disabled">
-        <span class="icon">{{ include('TQExtDirectBundle:data_collector:ext_direct_icon.html.twig') }}</span>
+    <span class="label {{ collector.extDirectRequest ? '' : 'disabled' }}">
+        <span class="icon">{{ include('TQExtDirectBundle:data_collector:icon.svg') }}</span>
         <strong>Ext.direct</strong>
     </span>
 {% endblock %}
 
 
 {% block panel %}
+    <h2>Ext.direct Metrics</h2>
 
+    <div class="metrics">
+        <div class="metric">
+            <span class="value">{{ '%0.2f'|format(collector.time) }} ms</span>
+            <span class="label">Request time</span>
+        </div>
+    </div>
+
+    <h2>Request</h2>
+    {{ collector.request|default(null)|yaml_encode }}
+
+    <h2>Response</h2>
+    {{ collector.response|default(null)|yaml_encode }}
 
 {% endblock %}

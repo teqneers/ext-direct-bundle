@@ -193,6 +193,7 @@ services:
             - "@?logger"
         tags:
             - { name: kernel.event_subscriber }
+            - { name: monolog.logger, channel: tq_extdirect }
 
     tq_extdirect.data_collector.request_collector:
         class: TQ\Bundle\ExtDirectBundle\DataCollector\RequestCollector

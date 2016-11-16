@@ -43,7 +43,7 @@
         </div>
     {% elseif collector.request %}
         <div class="card">
-            <pre class="break-long-words">{{ collector.request|yaml_encode }}</pre>
+            <pre class="break-long-words">{{ profiler_dump(collector.request) }}</pre>
         </div>
     {% else %}
         <div class="empty">
@@ -58,7 +58,7 @@
         </div>
     {% elseif collector.response %}
         <div class="card">
-            <pre class="break-long-words">{{ collector.response|yaml_encode }}</pre>
+            <pre class="break-long-words">{{ profiler_dump(collector.response) }}</pre>
         </div>
     {% else %}
         <div class="empty">

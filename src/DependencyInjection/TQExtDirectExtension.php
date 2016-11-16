@@ -43,12 +43,17 @@ class TQExtDirectExtension extends Extension
         if (!$config['debug']) {
             $container->removeDefinition('tq_extdirect.router.listener.stopwatch');
         } else {
-            $this->addClassesToCompile([
-                'TQ\ExtDirect\Router\EventListener\StopwatchListener'
-            ]);
+            $this->addClassesToCompile(
+                [
+                    'TQ\ExtDirect\Router\EventListener\StopwatchListener',
+                ]
+            );
         }
 
         if (!$config['debug'] || !$container->getParameter('kernel.debug')) {
+            $container->removeDefinition('tq_extdirect.data_collector.request_collector');
+            $container->removeDefinition('tq_extdirect.router.request_logger');
+            $container->removeDefinition('tq_extdirect.router.listener.request_log');
             $container->removeDefinition('tq_extdirect.router.listener.dump');
         }
 
@@ -75,18 +80,22 @@ class TQExtDirectExtension extends Extension
         } else {
             $container->getDefinition('tq_extdirect.router.argument_validator')
                       ->replaceArgument(1, $config['strict_validation']);
-            $this->addClassesToCompile([
-                'TQ\ExtDirect\Router\EventListener\ArgumentValidationListener'
-            ]);
+            $this->addClassesToCompile(
+                [
+                    'TQ\ExtDirect\Router\EventListener\ArgumentValidationListener',
+                ]
+            );
         }
 
         if (!$config['convert_arguments']) {
             $container->removeDefinition('tq_extdirect.router.argument_converter');
             $container->removeDefinition('tq_extdirect.router.listener.argument_conversion');
         } else {
-            $this->addClassesToCompile([
-                'TQ\ExtDirect\Router\EventListener\ArgumentConversionListener'
-            ]);
+            $this->addClassesToCompile(
+                [
+                    'TQ\ExtDirect\Router\EventListener\ArgumentConversionListener',
+                ]
+            );
         }
 
         if (!$config['enable_authorization']
@@ -96,18 +105,22 @@ class TQExtDirectExtension extends Extension
             $container->removeDefinition('tq_extdirect.router.authorization_checker');
             $container->removeDefinition('tq_extdirect.router.listener.authorization');
         } else {
-            $this->addClassesToCompile([
-                'TQ\ExtDirect\Router\EventListener\AuthorizationListener'
-            ]);
+            $this->addClassesToCompile(
+                [
+                    'TQ\ExtDirect\Router\EventListener\AuthorizationListener',
+                ]
+            );
         }
 
         if (!$config['convert_result']) {
             $container->removeDefinition('tq_extdirect.router.result_converter');
             $container->removeDefinition('tq_extdirect.router.listener.result_conversion');
         } else {
-            $this->addClassesToCompile([
-                'TQ\ExtDirect\Router\EventListener\ResultConversionListener'
-            ]);
+            $this->addClassesToCompile(
+                [
+                    'TQ\ExtDirect\Router\EventListener\ResultConversionListener',
+                ]
+            );
         }
 
         $defaultEndpoint = $config['default_endpoint'];
@@ -122,18 +135,20 @@ class TQExtDirectExtension extends Extension
         }
         $container->setParameter('tq_extdirect.endpoint.default', $defaultEndpoint);
 
-        $this->addClassesToCompile([
-            'TQ\ExtDirect\Metadata\Driver\AnnotationDriver',
-            'TQ\ExtDirect\Metadata\ActionMetadata',
-            'TQ\ExtDirect\Metadata\MethodMetadata',
-            'TQ\ExtDirect\Description\ActionDescription',
-            'TQ\ExtDirect\Description\MethodDescription',
-            'TQ\ExtDirect\Description\ServiceDescription',
-            'TQ\ExtDirect\Description\ServiceDescriptionFactory',
-            'TQ\ExtDirect\Service\DefaultServiceRegistry',
-            'TQ\ExtDirect\Service\Endpoint',
-            'TQ\ExtDirect\Router\ServiceReference',
-        ]);
+        $this->addClassesToCompile(
+            [
+                'TQ\ExtDirect\Metadata\Driver\AnnotationDriver',
+                'TQ\ExtDirect\Metadata\ActionMetadata',
+                'TQ\ExtDirect\Metadata\MethodMetadata',
+                'TQ\ExtDirect\Description\ActionDescription',
+                'TQ\ExtDirect\Description\MethodDescription',
+                'TQ\ExtDirect\Description\ServiceDescription',
+                'TQ\ExtDirect\Description\ServiceDescriptionFactory',
+                'TQ\ExtDirect\Service\DefaultServiceRegistry',
+                'TQ\ExtDirect\Service\Endpoint',
+                'TQ\ExtDirect\Router\ServiceReference',
+            ]
+        );
     }
 
     /**
@@ -143,7 +158,7 @@ class TQExtDirectExtension extends Extension
     private function loadEndpoints(array $endpoint, ContainerBuilder $container)
     {
         $id          = $endpoint['id'];
-        $directories = array();
+        $directories = [];
         if ($endpoint['auto_discover']) {
             $bundles = $container->getParameter('kernel.bundles');
             if ($endpoint['all_bundles']) {
@@ -215,7 +230,7 @@ class TQExtDirectExtension extends Extension
                   ->setPublic(false);
 
         $container->getDefinition('tq_extdirect.endpoint_manager')
-                  ->addMethodCall('addEndpoint', array(new Reference($endpointId)));
+                  ->addMethodCall('addEndpoint', [new Reference($endpointId)]);
     }
 
     /**
@@ -223,7 +238,9 @@ class TQExtDirectExtension extends Extension
      */
     public function getConfiguration(array $config, ContainerBuilder $container)
     {
-        return new Configuration($container->getParameterBag()
-                                           ->resolveValue('%kernel.debug%'));
+        return new Configuration(
+            $container->getParameterBag()
+                      ->resolveValue('%kernel.debug%')
+        );
     }
 }

@@ -1,0 +1,30 @@
+{% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
+
+{% block toolbar %}
+    {% set icon %}
+        {{ include('TQExtDirectBundle:data_collector:ext_direct_icon.html.twig') }}
+    {% endset %}
+
+    {% set text %}
+        <div class="sf-toolbar-info-piece">
+            <b>Test</b>
+            <span class="sf-toolbar-status">Test</span>
+        </div>
+    {% endset %}
+
+    {% include 'WebProfilerBundle:Profiler:toolbar_item.html.twig' with {'link': true} %}
+{% endblock %}
+
+
+{% block menu %}
+    <span class="label disabled">
+        <span class="icon">{{ include('TQExtDirectBundle:data_collector:ext_direct_icon.html.twig') }}</span>
+        <strong>Ext.direct</strong>
+    </span>
+{% endblock %}
+
+
+{% block panel %}
+
+
+{% endblock %}

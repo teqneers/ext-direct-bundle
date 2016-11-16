@@ -3,7 +3,7 @@
 {% block toolbar %}
     {% set is_ext_direct = collector.extDirectRequest %}
     {% set icon %}
-        {{ include('TQExtDirectBundle:data_collector:icon.html.twig') }}
+        {{ include('@TQExtDirect/data_collector/icon.svg') }}
     {% endset %}
 
     {% set text %}
@@ -19,7 +19,7 @@
 
 {% block menu %}
     <span class="label {{ collector.extDirectRequest ? '' : 'disabled' }}">
-        <span class="icon">{{ include('TQExtDirectBundle:data_collector:icon.html.twig') }}</span>
+        <span class="icon">{{ include('@TQExtDirect/data_collector/icon.svg') }}</span>
         <strong>Ext.direct</strong>
     </span>
 {% endblock %}

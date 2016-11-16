@@ -36,9 +36,33 @@
     </div>
 
     <h2>Request</h2>
-    {{ collector.request|default(null)|yaml_encode }}
+    {% if not is_ext_direct %}
+        <div class="empty">
+            <p>Request not available (request was not an Ext.direct request).</p>
+        </div>
+    {% elseif collector.request %}
+        <div class="card">
+            <pre class="break-long-words">{{ collector.request|yaml_encode }}</pre>
+        </div>
+    {% else %}
+        <div class="empty">
+            <p>No request</p>
+        </div>
+    {% endif %}
 
     <h2>Response</h2>
-    {{ collector.response|default(null)|yaml_encode }}
+    {% if not is_ext_direct %}
+        <div class="empty">
+            <p>Response not available (request was not an Ext.direct request).</p>
+        </div>
+    {% elseif collector.response %}
+        <div class="card">
+            <pre class="break-long-words">{{ collector.response|yaml_encode }}</pre>
+        </div>
+    {% else %}
+        <div class="empty">
+            <p>No response</p>
+        </div>
+    {% endif %}
 
 {% endblock %}

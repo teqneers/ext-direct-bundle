@@ -39,9 +39,15 @@ class RequestCollector extends DataCollector
      */
     public function collect(Request $request, Response $response, \Exception $exception = null)
     {
-        $this->data['request']  = $this->requestLogger->getRequest(false);
-        $this->data['response'] = $this->requestLogger->getResponse(false);
-        $this->data['time']     = $this->requestLogger->getElapsedTime();
+        if (method_exists($this, 'cloneVar')) {
+            $this->data['request']  = $this->cloneVar($this->requestLogger->getRequest(false));
+            $this->data['response'] = $this->cloneVar($this->requestLogger->getResponse(false));
+            $this->data['time']     = $this->cloneVar($this->requestLogger->getElapsedTime());
+        } else {
+            $this->data['request']  = $this->varToString($this->requestLogger->getRequest(false));
+            $this->data['response'] = $this->varToString($this->requestLogger->getResponse(false));
+            $this->data['time']     = $this->varToString($this->requestLogger->getElapsedTime());
+        }
     }
 
     /**

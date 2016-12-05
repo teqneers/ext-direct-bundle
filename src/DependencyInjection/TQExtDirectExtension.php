@@ -202,7 +202,11 @@ class TQExtDirectExtension extends Extension
             new DefinitionDecorator('tq_extdirect.service_description_factory')
         )
                   ->replaceArgument(0, new Reference($serviceRegistryId))
-                  ->replaceArgument(1, $endpoint['namespace']);
+                  ->replaceArgument(1, $endpoint['namespace'])
+                  ->replaceArgument(2, $endpoint['enable_buffer'])
+                  ->replaceArgument(3, $endpoint['buffer_limit'])
+                  ->replaceArgument(4, $endpoint['timeout'])
+                  ->replaceArgument(5, $endpoint['max_retries']);
 
         $serviceResolverId = sprintf('tq_extdirect.endpoint.%s.service_resolver', $id);
         $container->setDefinition(

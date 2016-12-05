@@ -87,6 +87,10 @@ services:
         arguments:
             - ~ # service registry
             - ~ # namespace
+            - ~ # enableBuffer
+            - ~ # bufferLimit
+            - ~ # timeout
+            - ~ # maxRetries
 
     tq_extdirect.service_factory:
         class: TQ\ExtDirect\Service\ContainerServiceFactory

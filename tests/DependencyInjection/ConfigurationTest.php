@@ -31,16 +31,19 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $configuration = $this->getConfiguration(false);
         $processor     = new Processor();
-        $config        = $processor->processConfiguration($configuration, array(
-            array(
-                'endpoints' => array(
-                    'api' => null
-                )
-            )
-        ));
+        $config        = $processor->processConfiguration(
+            $configuration,
+            [
+                [
+                    'endpoints' => [
+                        'api' => null,
+                    ],
+                ],
+            ]
+        );
 
         $this->assertEquals(
-            array(
+            [
                 'debug'                => false,
                 'cache'                => 'file',
                 'file_cache_dir'       => '%kernel.cache_dir%/tq_ext_direct',
@@ -50,17 +53,21 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'enable_authorization' => true,
                 'convert_result'       => true,
                 'default_endpoint'     => null,
-                'endpoints'            => array(
-                    'api' => array(
+                'endpoints'            => [
+                    'api' => [
                         'descriptor'    => 'Ext.app.REMOTING_API',
                         'namespace'     => 'Ext.global',
+                        'enable_buffer' => null,
+                        'buffer_limit'  => null,
+                        'timeout'       => null,
+                        'max_retries'   => null,
                         'auto_discover' => true,
                         'all_bundles'   => true,
-                        'bundles'       => array(),
-                        'directories'   => array()
-                    )
-                )
-            ),
+                        'bundles'       => [],
+                        'directories'   => [],
+                    ],
+                ],
+            ],
             $config
         );
     }
@@ -69,16 +76,19 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $configuration = $this->getConfiguration(true);
         $processor     = new Processor();
-        $config        = $processor->processConfiguration($configuration, array(
-            array(
-                'endpoints' => array(
-                    'api' => null
-                )
-            )
-        ));
+        $config        = $processor->processConfiguration(
+            $configuration,
+            [
+                [
+                    'endpoints' => [
+                        'api' => null,
+                    ],
+                ],
+            ]
+        );
 
         $this->assertEquals(
-            array(
+            [
                 'debug'                => true,
                 'cache'                => 'file',
                 'file_cache_dir'       => '%kernel.cache_dir%/tq_ext_direct',
@@ -88,17 +98,21 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'enable_authorization' => true,
                 'convert_result'       => true,
                 'default_endpoint'     => null,
-                'endpoints'            => array(
-                    'api' => array(
+                'endpoints'            => [
+                    'api' => [
                         'descriptor'    => 'Ext.app.REMOTING_API',
                         'namespace'     => 'Ext.global',
+                        'enable_buffer' => null,
+                        'buffer_limit'  => null,
+                        'timeout'       => null,
+                        'max_retries'   => null,
                         'auto_discover' => true,
                         'all_bundles'   => true,
-                        'bundles'       => array(),
-                        'directories'   => array()
-                    )
-                )
-            ),
+                        'bundles'       => [],
+                        'directories'   => [],
+                    ],
+                ],
+            ],
             $config
         );
     }
@@ -113,7 +127,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             'The child node "endpoints" at path "tq_ext_direct" must be configured.'
         );
 
-        $processor->processConfiguration($configuration, array(array()));
+        $processor->processConfiguration($configuration, [[]]);
     }
 
     public function testConfigurationInvalidIfEndpointsIsEmpty()
@@ -126,11 +140,14 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             'The path "tq_ext_direct.endpoints" should have at least 1 element(s) defined.'
         );
 
-        $processor->processConfiguration($configuration, array(
-            array(
-                'endpoints' => array()
+        $processor->processConfiguration(
+            $configuration,
+            [
+                [
+                    'endpoints' => [],
 
-            )
-        ));
+                ],
+            ]
+        );
     }
 }

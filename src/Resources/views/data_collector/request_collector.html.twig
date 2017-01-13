@@ -31,39 +31,62 @@
 
     <div class="metrics">
         <div class="metric">
+            <span class="value">{{ include('@WebProfiler/Icon/' ~ (is_ext_direct ? 'yes' : 'no') ~ '.svg') }}</span>
+            <span class="label">Ext.direct</span>
+        </div>
+        <div class="metric">
+            <span class="value">{{ include('@WebProfiler/Icon/' ~ (collector.formPost ? 'yes' : 'no') ~ '.svg') }}</span>
+            <span class="label">Form Post</span>
+        </div>
+        <div class="metric">
+            <span class="value">{{ include('@WebProfiler/Icon/' ~ (collector.upload ? 'yes' : 'no') ~ '.svg') }}</span>
+            <span class="label">Upload</span>
+        </div>
+        <div class="metric">
+            <span class="value">{{ collector.requestCount }}</span>
+            <span class="label">Requests</span>
+        </div>
+        <div class="metric">
             <span class="value">{{ '%0.2f'|format(collector.time) }} ms</span>
             <span class="label">Request time</span>
         </div>
     </div>
 
-    <h2>Request</h2>
+    <h2>Requests</h2>
     {% if not is_ext_direct %}
         <div class="empty">
-            <p>Request not available (request was not an Ext.direct request).</p>
+            <p>Requests not available (request was not an Ext.direct request).</p>
         </div>
-    {% elseif collector.request %}
-        <div class="card">
-            <pre class="break-long-words">{{ profiler_dump(collector.request) }}</pre>
-        </div>
+    {% elseif collector.requests is not empty %}
+        <table class="alt queries-table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>TID</th>
+                <th class="nowrap">Action::Method</th>
+                <th style="width: 100%;">Response</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for request in collector.requests %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ request.tid }}</td>
+                    <td>
+                        <nobr>{{ request.action }}::{{ request.method }}</nobr>
+                        <div>
+                            <strong class="font-normal text-small">Data</strong>:
+                            {{ profiler_dump(request.data) }}
+                        </div>
+                    </td>
+                    <td>{{ profiler_dump(request.response) }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     {% else %}
         <div class="empty">
-            <p>No request</p>
+            <p>No requests found.</p>
         </div>
     {% endif %}
-
-    <h2>Response</h2>
-    {% if not is_ext_direct %}
-        <div class="empty">
-            <p>Response not available (request was not an Ext.direct request).</p>
-        </div>
-    {% elseif collector.response %}
-        <div class="card">
-            <pre class="break-long-words">{{ profiler_dump(collector.response) }}</pre>
-        </div>
-    {% else %}
-        <div class="empty">
-            <p>No response</p>
-        </div>
-    {% endif %}
-
 {% endblock %}

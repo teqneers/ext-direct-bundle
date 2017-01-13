@@ -39,15 +39,41 @@ class RequestCollector extends DataCollector
      */
     public function collect(Request $request, Response $response, \Exception $exception = null)
     {
-        if (method_exists($this, 'cloneVar')) {
-            $this->data['request']  = $this->cloneVar($this->requestLogger->getRequest(false));
-            $this->data['response'] = $this->cloneVar($this->requestLogger->getResponse(false));
-            $this->data['time']     = $this->requestLogger->getElapsedTime();
-        } else {
-            $this->data['request']  = $this->varToString($this->requestLogger->getRequest(false));
-            $this->data['response'] = $this->varToString($this->requestLogger->getResponse(false));
-            $this->data['time']     = $this->requestLogger->getElapsedTime();
+        $extDirectRequest  = $this->requestLogger->getRequest(false);
+        $extDirectResponse = $this->requestLogger->getResponse(false);
+
+        $this->data['formPost']    = $this->requestLogger->isFormPost();
+        $this->data['upload']      = $this->requestLogger->isUpload();
+        $this->data['time']        = $this->requestLogger->getElapsedTime();
+        $this->data['isExtDirect'] = $extDirectRequest !== null;
+
+        $requestCount = 0;
+        $requests     = [];
+        if ($this->data['isExtDirect']) {
+            $firstKey = key($extDirectRequest);
+            if (!is_numeric($firstKey)) {
+                $requestCount      = 1;
+                $extDirectRequest  = [$extDirectRequest];
+                $extDirectResponse = [$extDirectResponse];
+            } else {
+                $requestCount = count($extDirectRequest);
+            }
+
+            $hasCloneVar = method_exists($this, 'cloneVar');
+            foreach ($extDirectRequest as $i => $r) {
+                if ($hasCloneVar) {
+                    $data        = $this->cloneVar($r['data']);
+                    $extResponse = $this->cloneVar($extDirectResponse[$i]);
+                } else {
+                    $data        = $this->varToString($r['data']);
+                    $extResponse = $this->varToString($extDirectResponse[$i]);
+                }
+
+                $requests[] = array_merge($r, ['data' => $data, 'response' => $extResponse]);
+            }
         }
+        $this->data['requestCount'] = $requestCount;
+        $this->data['requests']     = $requests;
     }
 
     /**
@@ -55,7 +81,23 @@ class RequestCollector extends DataCollector
      */
     public function isExtDirectRequest()
     {
-        return $this->data['request'] !== null;
+        return $this->data['isExtDirect'];
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFormPost()
+    {
+        return $this->data['formPost'];
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUpload()
+    {
+        return $this->data['upload'];
     }
 
     /**
@@ -67,19 +109,19 @@ class RequestCollector extends DataCollector
     }
 
     /**
-     * @return array|null
+     * @return int
      */
-    public function getRequest()
+    public function getRequestCount()
     {
-        return $this->data['request'];
+        return $this->data['requestCount'];
     }
 
     /**
-     * @return array|null
+     * @return array
      */
-    public function getResponse()
+    public function getRequests()
     {
-        return $this->data['response'];
+        return $this->data['requests'];
     }
 
     /**

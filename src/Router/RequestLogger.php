@@ -30,6 +30,16 @@ class RequestLogger
     private $endTime;
 
     /**
+     * @var bool
+     */
+    private $formPost = false;
+
+    /**
+     * @var bool
+     */
+    private $upload = false;
+
+    /**
      * @var string|null
      */
     private $request;
@@ -45,6 +55,8 @@ class RequestLogger
     public function startRequest(RequestCollection $request)
     {
         $this->startTime = microtime(true) * 1000;
+        $this->formPost  = $request->isForm();
+        $this->upload    = $request->isUpload();
         $this->request   = json_encode($request);
     }
 
@@ -58,6 +70,22 @@ class RequestLogger
     }
 
     /**
+     * @return bool
+     */
+    public function isFormPost()
+    {
+        return $this->formPost;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUpload()
+    {
+        return $this->upload;
+    }
+
+    /**
      * @param bool $asString
      * @return array|string|null
      */
@@ -66,6 +94,7 @@ class RequestLogger
         if ($asString) {
             return $this->request;
         }
+
         return $this->request ? json_decode($this->request, true) : null;
     }
 
@@ -78,6 +107,7 @@ class RequestLogger
         if ($asString) {
             return $this->response;
         }
+
         return $this->response ? json_decode($this->response, true) : null;
     }
 
@@ -90,6 +120,7 @@ class RequestLogger
         if ($this->startTime && $this->endTime) {
             $time = $this->endTime - $this->startTime;
         }
+
         return $time;
     }
 }

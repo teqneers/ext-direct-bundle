@@ -28,7 +28,7 @@
         "symfony/dependency-injection": "~2.8|~3.0",
         "symfony/routing": "~2.8|~3.0",
         "teqneers/ext-direct": "~1.0,>=1.0.5",
-        "twig/twig": "~1.24",
+        "twig/twig": "~1.24|~2.0",
         "jms/serializer-bundle": "~1.1"
     },
     "require-dev": {

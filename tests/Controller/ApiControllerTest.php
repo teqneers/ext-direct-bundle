@@ -24,7 +24,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
     public function testServiceDescriptionAction()
     {
         /** @var UrlGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject $urlGenerator */
-        $urlGenerator = $this->getMock(
+        $urlGenerator = $this->createPartialMock(
             'Symfony\Component\Routing\Generator\UrlGeneratorInterface',
             array('generate', 'setContext', 'getContext')
         );
@@ -42,12 +42,9 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
                      ->willReturn('http://example.com/api/router');
 
         /** @var \TQ\ExtDirect\Service\Endpoint|\PHPUnit_Framework_MockObject_MockObject $endpoint */
-        $endpoint = $this->getMock(
+        $endpoint = $this->createPartialMock(
             'TQ\ExtDirect\Service\Endpoint',
-            array('getId', 'createServiceDescription'),
-            array(),
-            '',
-            false
+            array('getId', 'createServiceDescription')
         );
 
         $endpoint->expects($this->once())
@@ -62,7 +59,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
                  ->willReturn(new ServiceDescriptionResponse(new ServiceDescription('http://example.com/api/router')));
 
         /** @var \TQ\ExtDirect\Service\EndpointManager|\PHPUnit_Framework_MockObject_MockObject $endpointManager */
-        $endpointManager = $this->getMock(
+        $endpointManager = $this->createPartialMock(
             'TQ\ExtDirect\Service\EndpointManager',
             array('getEndpoint')
         );
@@ -87,7 +84,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
     public function testServiceDescriptionActionFailsOnNonGetRequest()
     {
         /** @var UrlGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject $urlGenerator */
-        $urlGenerator = $this->getMock(
+        $urlGenerator = $this->createPartialMock(
             'Symfony\Component\Routing\Generator\UrlGeneratorInterface',
             array('generate', 'setContext', 'getContext')
         );
@@ -96,7 +93,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
                      ->method('generate');
 
         /** @var \TQ\ExtDirect\Service\EndpointManager|\PHPUnit_Framework_MockObject_MockObject $endpointManager */
-        $endpointManager = $this->getMock(
+        $endpointManager = $this->createPartialMock(
             'TQ\ExtDirect\Service\EndpointManager',
             array('getEndpoint')
         );
@@ -116,7 +113,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
     public function testServiceDescriptionActionFailsWhenEndpointIsNotFound()
     {
         /** @var UrlGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject $urlGenerator */
-        $urlGenerator = $this->getMock(
+        $urlGenerator = $this->createPartialMock(
             'Symfony\Component\Routing\Generator\UrlGeneratorInterface',
             array('generate', 'setContext', 'getContext')
         );
@@ -125,7 +122,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
                      ->method('generate');
 
         /** @var \TQ\ExtDirect\Service\EndpointManager|\PHPUnit_Framework_MockObject_MockObject $endpointManager */
-        $endpointManager = $this->getMock(
+        $endpointManager = $this->createPartialMock(
             'TQ\ExtDirect\Service\EndpointManager',
             array('getEndpoint')
         );
@@ -147,7 +144,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
     public function testServiceDescriptionActionInJsonFormat()
     {
         /** @var UrlGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject $urlGenerator */
-        $urlGenerator = $this->getMock(
+        $urlGenerator = $this->createPartialMock(
             'Symfony\Component\Routing\Generator\UrlGeneratorInterface',
             array('generate', 'setContext', 'getContext')
         );
@@ -165,12 +162,9 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
                      ->willReturn('http://example.com/api/router');
 
         /** @var \TQ\ExtDirect\Service\Endpoint|\PHPUnit_Framework_MockObject_MockObject $endpoint */
-        $endpoint = $this->getMock(
+        $endpoint = $this->createPartialMock(
             'TQ\ExtDirect\Service\Endpoint',
-            array('getId', 'createServiceDescription'),
-            array(),
-            '',
-            false
+            array('getId', 'createServiceDescription')
         );
 
         $endpoint->expects($this->once())
@@ -184,7 +178,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
                  );
 
         /** @var \TQ\ExtDirect\Service\EndpointManager|\PHPUnit_Framework_MockObject_MockObject $endpointManager */
-        $endpointManager = $this->getMock(
+        $endpointManager = $this->createPartialMock(
             'TQ\ExtDirect\Service\EndpointManager',
             array('getEndpoint')
         );

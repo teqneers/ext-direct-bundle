@@ -21,7 +21,7 @@ class TemplatingHelperTest extends \PHPUnit_Framework_TestCase
     public function testGetApiPath()
     {
         /** @var UrlGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject $urlGenerator */
-        $urlGenerator = $this->getMock(
+        $urlGenerator = $this->createPartialMock(
             'Symfony\Component\Routing\Generator\UrlGeneratorInterface',
             array('generate', 'setContext', 'getContext')
         );
@@ -44,7 +44,7 @@ class TemplatingHelperTest extends \PHPUnit_Framework_TestCase
     public function testGetJsonApiPath()
     {
         /** @var UrlGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject $urlGenerator */
-        $urlGenerator = $this->getMock(
+        $urlGenerator = $this->createPartialMock(
             'Symfony\Component\Routing\Generator\UrlGeneratorInterface',
             array('generate', 'setContext', 'getContext')
         );

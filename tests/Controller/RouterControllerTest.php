@@ -25,12 +25,9 @@ class RouterControllerTest extends \PHPUnit_Framework_TestCase
         $request->setMethod(Request::METHOD_POST);
 
         /** @var \TQ\ExtDirect\Service\Endpoint|\PHPUnit_Framework_MockObject_MockObject $endpoint */
-        $endpoint = $this->getMock(
+        $endpoint = $this->createPartialMock(
             'TQ\ExtDirect\Service\Endpoint',
-            array('getId', 'handleRequest'),
-            array(),
-            '',
-            false
+            array('getId', 'handleRequest')
         );
 
         $endpoint->expects($this->once())
@@ -39,7 +36,7 @@ class RouterControllerTest extends \PHPUnit_Framework_TestCase
                  ->willReturn(new JsonResponse());
 
         /** @var \TQ\ExtDirect\Service\EndpointManager|\PHPUnit_Framework_MockObject_MockObject $endpointManager */
-        $endpointManager = $this->getMock(
+        $endpointManager = $this->createPartialMock(
             'TQ\ExtDirect\Service\EndpointManager',
             array('getEndpoint')
         );
@@ -64,7 +61,7 @@ class RouterControllerTest extends \PHPUnit_Framework_TestCase
         $request->setMethod(Request::METHOD_GET);
 
         /** @var \TQ\ExtDirect\Service\EndpointManager|\PHPUnit_Framework_MockObject_MockObject $endpointManager */
-        $endpointManager = $this->getMock(
+        $endpointManager = $this->createPartialMock(
             'TQ\ExtDirect\Service\EndpointManager',
             array('getEndpoint')
         );
@@ -83,7 +80,7 @@ class RouterControllerTest extends \PHPUnit_Framework_TestCase
         $request->setMethod(Request::METHOD_POST);
 
         /** @var \TQ\ExtDirect\Service\EndpointManager|\PHPUnit_Framework_MockObject_MockObject $endpointManager */
-        $endpointManager = $this->getMock(
+        $endpointManager = $this->createPartialMock(
             'TQ\ExtDirect\Service\EndpointManager',
             array('getEndpoint')
         );

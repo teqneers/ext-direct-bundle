@@ -110,13 +110,13 @@ class TQExtDirectExtensionTest extends \PHPUnit_Framework_TestCase
         $rootPath = sys_get_temp_dir() . '/ext-direct-bundle';
 
         /** @var UrlGeneratorInterface */
-        $urlGenerator = $this->getMock(
+        $urlGenerator = $this->createPartialMock(
             'Symfony\Component\Routing\Generator\UrlGeneratorInterface',
             array('generate', 'setContext', 'getContext')
         );
 
         /** @var \Doctrine\Common\Annotations\Reader $annotationReader */
-        $annotationReader = $this->getMock(
+        $annotationReader = $this->createPartialMock(
             'Doctrine\Common\Annotations\Reader',
             array(
                 'getClassAnnotations',
@@ -129,7 +129,7 @@ class TQExtDirectExtensionTest extends \PHPUnit_Framework_TestCase
         );
 
         /** @var \Symfony\Component\Validator\Validator\ValidatorInterface */
-        $validator = $this->getMock(
+        $validator = $this->createPartialMock(
             'Symfony\Component\Validator\Validator\ValidatorInterface',
             array(
                 'validate',
@@ -143,7 +143,7 @@ class TQExtDirectExtensionTest extends \PHPUnit_Framework_TestCase
         );
 
         /** @var \JMS\Serializer\Serializer $serializer */
-        $serializer = $this->getMock('JMS\Serializer\Serializer', array(), array(), '', false);
+        $serializer = $this->createMock('JMS\Serializer\Serializer');
 
         $bundle    = new TQExtDirectBundle();
         $extension = $bundle->getContainerExtension();

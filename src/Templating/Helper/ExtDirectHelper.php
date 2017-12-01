@@ -9,6 +9,7 @@
 
 namespace TQ\Bundle\ExtDirectBundle\Templating\Helper;
 
+use Symfony\Component\Templating\Helper\Helper;
 use TQ\Bundle\ExtDirectBundle\Helper\TemplatingHelper;
 
 /**
@@ -16,7 +17,7 @@ use TQ\Bundle\ExtDirectBundle\Helper\TemplatingHelper;
  *
  * @package TQ\Bundle\ExtDirectBundle\Templating\Helper
  */
-class ExtDirectHelper
+class ExtDirectHelper extends Helper
 {
     /**
      * @var TemplatingHelper

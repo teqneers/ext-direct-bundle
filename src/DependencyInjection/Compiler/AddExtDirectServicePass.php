@@ -18,7 +18,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class AddExtDirectServicePass implements CompilerPassInterface
 {
-
     /**
      * {@inheritdoc}
      */
@@ -36,6 +35,9 @@ class AddExtDirectServicePass implements CompilerPassInterface
                     $alias = isset($tag['alias']) ? $tag['alias'] : null;
 
                     $classes[$endpoint][$serviceDefinition->getClass()] = [$serviceId, $alias];
+
+                    // ensures that services are public
+                    $serviceDefinition->setPublic(true);
                 }
             }
         }

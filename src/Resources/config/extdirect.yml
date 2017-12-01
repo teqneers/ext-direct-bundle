@@ -4,12 +4,14 @@ parameters:
 services:
     tq_extdirect.ext_direct_api_controller:
         class: TQ\Bundle\ExtDirectBundle\Controller\ApiController
+        public: true
         arguments:
             - "@tq_extdirect.endpoint_manager"
             - "@router"
 
     tq_extdirect.ext_direct_router_controller:
         class: TQ\Bundle\ExtDirectBundle\Controller\RouterController
+        public: true
         arguments:
             - "@tq_extdirect.endpoint_manager"
 
@@ -24,7 +26,7 @@ services:
             - { name: twig.extension }
 
     tq_extdirect.templating.helper.extdirect_helper:
-        class: TQ\Bundle\ExtJSApplicationBundle\Templating\Helper\ExtDirectHelper
+        class: TQ\Bundle\ExtDirectBundle\Templating\Helper\ExtDirectHelper
         arguments: [ "@tq_extdirect.templating_helper" ]
         tags:
             - { name: templating.helper, alias: tq_extdirect }

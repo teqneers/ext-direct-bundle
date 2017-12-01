@@ -50,6 +50,19 @@ class RequestLogger
     private $response;
 
     /**
+     *
+     */
+    public function reset()
+    {
+        $this->startTime = null;
+        $this->endTime   = null;
+        $this->formPost  = false;
+        $this->upload    = false;
+        $this->request   = null;
+        $this->response  = null;
+    }
+
+    /**
      * @param RequestCollection $request
      */
     public function startRequest(RequestCollection $request)

@@ -77,6 +77,15 @@ class RequestCollector extends DataCollector
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function reset()
+    {
+        $this->data = [];
+        $this->requestLogger->reset();
+    }
+
+    /**
      * @return bool
      */
     public function isExtDirectRequest()

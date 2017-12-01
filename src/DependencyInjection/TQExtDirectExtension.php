@@ -42,7 +42,7 @@ class TQExtDirectExtension extends Extension
 
         if (!$config['debug']) {
             $container->removeDefinition('tq_extdirect.router.listener.stopwatch');
-        } else {
+        } elseif (\PHP_VERSION_ID < 70000) {
             $this->addClassesToCompile(
                 [
                     'TQ\ExtDirect\Router\EventListener\StopwatchListener',
@@ -80,17 +80,19 @@ class TQExtDirectExtension extends Extension
         } else {
             $container->getDefinition('tq_extdirect.router.argument_validator')
                       ->replaceArgument(1, $config['strict_validation']);
-            $this->addClassesToCompile(
-                [
-                    'TQ\ExtDirect\Router\EventListener\ArgumentValidationListener',
-                ]
-            );
+            if (\PHP_VERSION_ID < 70000) {
+                $this->addClassesToCompile(
+                    [
+                        'TQ\ExtDirect\Router\EventListener\ArgumentValidationListener',
+                    ]
+                );
+            }
         }
 
         if (!$config['convert_arguments']) {
             $container->removeDefinition('tq_extdirect.router.argument_converter');
             $container->removeDefinition('tq_extdirect.router.listener.argument_conversion');
-        } else {
+        } elseif (\PHP_VERSION_ID < 70000) {
             $this->addClassesToCompile(
                 [
                     'TQ\ExtDirect\Router\EventListener\ArgumentConversionListener',
@@ -104,7 +106,7 @@ class TQExtDirectExtension extends Extension
         ) {
             $container->removeDefinition('tq_extdirect.router.authorization_checker');
             $container->removeDefinition('tq_extdirect.router.listener.authorization');
-        } else {
+        } elseif (\PHP_VERSION_ID < 70000) {
             $this->addClassesToCompile(
                 [
                     'TQ\ExtDirect\Router\EventListener\AuthorizationListener',
@@ -115,7 +117,7 @@ class TQExtDirectExtension extends Extension
         if (!$config['convert_result']) {
             $container->removeDefinition('tq_extdirect.router.result_converter');
             $container->removeDefinition('tq_extdirect.router.listener.result_conversion');
-        } else {
+        } elseif (\PHP_VERSION_ID < 70000) {
             $this->addClassesToCompile(
                 [
                     'TQ\ExtDirect\Router\EventListener\ResultConversionListener',
@@ -135,20 +137,22 @@ class TQExtDirectExtension extends Extension
         }
         $container->setParameter('tq_extdirect.endpoint.default', $defaultEndpoint);
 
-        $this->addClassesToCompile(
-            [
-                'TQ\ExtDirect\Metadata\Driver\AnnotationDriver',
-                'TQ\ExtDirect\Metadata\ActionMetadata',
-                'TQ\ExtDirect\Metadata\MethodMetadata',
-                'TQ\ExtDirect\Description\ActionDescription',
-                'TQ\ExtDirect\Description\MethodDescription',
-                'TQ\ExtDirect\Description\ServiceDescription',
-                'TQ\ExtDirect\Description\ServiceDescriptionFactory',
-                'TQ\ExtDirect\Service\DefaultServiceRegistry',
-                'TQ\ExtDirect\Service\Endpoint',
-                'TQ\ExtDirect\Router\ServiceReference',
-            ]
-        );
+        if (\PHP_VERSION_ID < 70000) {
+            $this->addClassesToCompile(
+                [
+                    'TQ\ExtDirect\Metadata\Driver\AnnotationDriver',
+                    'TQ\ExtDirect\Metadata\ActionMetadata',
+                    'TQ\ExtDirect\Metadata\MethodMetadata',
+                    'TQ\ExtDirect\Description\ActionDescription',
+                    'TQ\ExtDirect\Description\MethodDescription',
+                    'TQ\ExtDirect\Description\ServiceDescription',
+                    'TQ\ExtDirect\Description\ServiceDescriptionFactory',
+                    'TQ\ExtDirect\Service\DefaultServiceRegistry',
+                    'TQ\ExtDirect\Service\Endpoint',
+                    'TQ\ExtDirect\Router\ServiceReference',
+                ]
+            );
+        }
     }
 
     /**

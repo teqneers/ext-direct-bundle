@@ -142,8 +142,8 @@ class TQExtDirectExtensionTest extends \PHPUnit_Framework_TestCase
             )
         );
 
-        /** @var \JMS\Serializer\Serializer $serializer */
-        $serializer = $this->createMock('JMS\Serializer\Serializer');
+        /** @var \JMS\Serializer\SerializerInterface $serializer */
+        $serializer = $this->createMock('JMS\Serializer\SerializerInterface');
 
         $bundle    = new TQExtDirectBundle();
         $extension = $bundle->getContainerExtension();

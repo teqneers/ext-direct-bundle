@@ -8,6 +8,8 @@
 
 namespace TQ\Bundle\ExtDirectBundle\Tests\Helper;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use TQ\Bundle\ExtDirectBundle\Helper\TemplatingHelper;
 
@@ -16,11 +18,11 @@ use TQ\Bundle\ExtDirectBundle\Helper\TemplatingHelper;
  *
  * @package TQ\Bundle\ExtDirectBundle\Tests\Helper
  */
-class TemplatingHelperTest extends \PHPUnit_Framework_TestCase
+class TemplatingHelperTest extends TestCase
 {
     public function testGetApiPath()
     {
-        /** @var UrlGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject $urlGenerator */
+        /** @var UrlGeneratorInterface|MockObject $urlGenerator */
         $urlGenerator = $this->createPartialMock(
             'Symfony\Component\Routing\Generator\UrlGeneratorInterface',
             array('generate', 'setContext', 'getContext')
@@ -43,7 +45,7 @@ class TemplatingHelperTest extends \PHPUnit_Framework_TestCase
 
     public function testGetJsonApiPath()
     {
-        /** @var UrlGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject $urlGenerator */
+        /** @var UrlGeneratorInterface|MockObject $urlGenerator */
         $urlGenerator = $this->createPartialMock(
             'Symfony\Component\Routing\Generator\UrlGeneratorInterface',
             array('generate', 'setContext', 'getContext')

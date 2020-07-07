@@ -8,6 +8,8 @@
 
 namespace TQ\Bundle\ExtDirectBundle\Tests\Controller;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use TQ\Bundle\ExtDirectBundle\Controller\RouterController;
@@ -17,14 +19,14 @@ use TQ\Bundle\ExtDirectBundle\Controller\RouterController;
  *
  * @package TQ\Bundle\ExtDirectBundle\Tests\Controller
  */
-class RouterControllerTest extends \PHPUnit_Framework_TestCase
+class RouterControllerTest extends TestCase
 {
     public function testRouterAction()
     {
         $request = new Request();
         $request->setMethod(Request::METHOD_POST);
 
-        /** @var \TQ\ExtDirect\Service\Endpoint|\PHPUnit_Framework_MockObject_MockObject $endpoint */
+        /** @var \TQ\ExtDirect\Service\Endpoint|MockObject $endpoint */
         $endpoint = $this->createPartialMock(
             'TQ\ExtDirect\Service\Endpoint',
             array('getId', 'handleRequest')
@@ -35,7 +37,7 @@ class RouterControllerTest extends \PHPUnit_Framework_TestCase
                  ->with($this->equalTo($request))
                  ->willReturn(new JsonResponse());
 
-        /** @var \TQ\ExtDirect\Service\EndpointManager|\PHPUnit_Framework_MockObject_MockObject $endpointManager */
+        /** @var \TQ\ExtDirect\Service\EndpointManager|MockObject $endpointManager */
         $endpointManager = $this->createPartialMock(
             'TQ\ExtDirect\Service\EndpointManager',
             array('getEndpoint')
@@ -60,7 +62,7 @@ class RouterControllerTest extends \PHPUnit_Framework_TestCase
         $request = new Request();
         $request->setMethod(Request::METHOD_GET);
 
-        /** @var \TQ\ExtDirect\Service\EndpointManager|\PHPUnit_Framework_MockObject_MockObject $endpointManager */
+        /** @var \TQ\ExtDirect\Service\EndpointManager|MockObject $endpointManager */
         $endpointManager = $this->createPartialMock(
             'TQ\ExtDirect\Service\EndpointManager',
             array('getEndpoint')
@@ -70,7 +72,7 @@ class RouterControllerTest extends \PHPUnit_Framework_TestCase
                         ->method('getEndpoint');
 
         $controller = new RouterController($endpointManager);
-        $this->setExpectedException('Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException');
+        $this->expectException('Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException');
         $controller->routerAction('api', $request);
     }
 
@@ -79,7 +81,7 @@ class RouterControllerTest extends \PHPUnit_Framework_TestCase
         $request = new Request();
         $request->setMethod(Request::METHOD_POST);
 
-        /** @var \TQ\ExtDirect\Service\EndpointManager|\PHPUnit_Framework_MockObject_MockObject $endpointManager */
+        /** @var \TQ\ExtDirect\Service\EndpointManager|MockObject $endpointManager */
         $endpointManager = $this->createPartialMock(
             'TQ\ExtDirect\Service\EndpointManager',
             array('getEndpoint')
@@ -91,7 +93,7 @@ class RouterControllerTest extends \PHPUnit_Framework_TestCase
                         ->willThrowException(new \InvalidArgumentException('Endpoint "api" not found"'));
 
         $controller = new RouterController($endpointManager);
-        $this->setExpectedException('Symfony\Component\HttpKernel\Exception\NotFoundHttpException');
+        $this->expectException('Symfony\Component\HttpKernel\Exception\NotFoundHttpException');
         $controller->routerAction('api', $request);
     }
 }

@@ -8,6 +8,7 @@
 
 namespace TQ\Bundle\ExtDirectBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use TQ\Bundle\ExtDirectBundle\TQExtDirectBundle;
@@ -17,12 +18,12 @@ use TQ\Bundle\ExtDirectBundle\TQExtDirectBundle;
  *
  * @package TQ\Bundle\ExtDirectBundle\Tests\DependencyInjection
  */
-class TQExtDirectExtensionTest extends \PHPUnit_Framework_TestCase
+class TQExtDirectExtensionTest extends TestCase
 {
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->clearTempDir();
     }
@@ -30,7 +31,7 @@ class TQExtDirectExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * {@inheritdoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->clearTempDir();
     }

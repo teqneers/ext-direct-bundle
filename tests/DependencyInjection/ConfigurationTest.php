@@ -8,6 +8,7 @@
 
 namespace TQ\Bundle\ExtDirectBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
 use TQ\Bundle\ExtDirectBundle\DependencyInjection\Configuration;
 
@@ -16,7 +17,7 @@ use TQ\Bundle\ExtDirectBundle\DependencyInjection\Configuration;
  *
  * @package TQ\Bundle\ExtDirectBundle\Tests\DependencyInjection
  */
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
+class ConfigurationTest extends TestCase
 {
     /**
      * @param bool $debug
@@ -122,7 +123,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $configuration = $this->getConfiguration(false);
         $processor     = new Processor();
 
-        $this->setExpectedException(
+        $this->expectException(
             'Symfony\Component\Config\Definition\Exception\InvalidConfigurationException',
             'The child node "endpoints" at path "tq_ext_direct" must be configured.'
         );
@@ -135,7 +136,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $configuration = $this->getConfiguration(false);
         $processor     = new Processor();
 
-        $this->setExpectedException(
+        $this->expectException(
             'Symfony\Component\Config\Definition\Exception\InvalidConfigurationException',
             'The path "tq_ext_direct.endpoints" should have at least 1 element(s) defined.'
         );

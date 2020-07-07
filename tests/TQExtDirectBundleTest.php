@@ -9,6 +9,7 @@
 namespace TQ\Bundle\ExtDirectBundle\Tests;
 
 use JMS\SerializerBundle\JMSSerializerBundle;
+use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,12 +23,12 @@ use TQ\Bundle\ExtDirectBundle\TQExtDirectBundle;
  *
  * @package TQ\Bundle\ExtDirectBundle\Tests
  */
-class TQExtDirectBundleTest extends \PHPUnit_Framework_TestCase
+class TQExtDirectBundleTest extends TestCase
 {
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->clearTempDir();
     }
@@ -35,7 +36,7 @@ class TQExtDirectBundleTest extends \PHPUnit_Framework_TestCase
     /**
      * {@inheritdoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->clearTempDir();
     }

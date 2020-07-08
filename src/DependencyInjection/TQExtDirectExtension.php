@@ -13,7 +13,7 @@ namespace TQ\Bundle\ExtDirectBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
+use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -189,21 +189,21 @@ class TQExtDirectExtension extends Extension
         $pathLoaderId = sprintf('tq_extdirect.endpoint.%s.service_path_loader', $id);
         $container->setDefinition(
             $pathLoaderId,
-            new DefinitionDecorator('tq_extdirect.service_path_loader')
+            new ChildDefinition('tq_extdirect.service_path_loader')
         )
                   ->replaceArgument(0, $directories);
 
         $serviceRegistryId = sprintf('tq_extdirect.endpoint.%s.registry', $id);
         $container->setDefinition(
             $serviceRegistryId,
-            new DefinitionDecorator('tq_extdirect.service_registry')
+            new ChildDefinition('tq_extdirect.service_registry')
         )
                   ->addMethodCall('importServices', [new Reference($pathLoaderId)]);
 
         $descriptionFactoryId = sprintf('tq_extdirect.endpoint.%s.description_factory', $id);
         $container->setDefinition(
             $descriptionFactoryId,
-            new DefinitionDecorator('tq_extdirect.service_description_factory')
+            new ChildDefinition('tq_extdirect.service_description_factory')
         )
                   ->replaceArgument(0, new Reference($serviceRegistryId))
                   ->replaceArgument(1, $endpoint['namespace'])
@@ -215,21 +215,21 @@ class TQExtDirectExtension extends Extension
         $serviceResolverId = sprintf('tq_extdirect.endpoint.%s.service_resolver', $id);
         $container->setDefinition(
             $serviceResolverId,
-            new DefinitionDecorator('tq_extdirect.service_resolver')
+            new ChildDefinition('tq_extdirect.service_resolver')
         )
                   ->replaceArgument(0, new Reference($serviceRegistryId));
 
         $routerId = sprintf('tq_extdirect.endpoint.%s.router', $id);
         $container->setDefinition(
             $routerId,
-            new DefinitionDecorator('tq_extdirect.router')
+            new ChildDefinition('tq_extdirect.router')
         )
                   ->replaceArgument(0, new Reference($serviceResolverId));
 
         $endpointId = sprintf('tq_extdirect.endpoint.%s', $id);
         $container->setDefinition(
             $endpointId,
-            new DefinitionDecorator('tq_extdirect.endpoint')
+            new ChildDefinition('tq_extdirect.endpoint')
         )
                   ->replaceArgument(0, $id)
                   ->replaceArgument(1, new Reference($descriptionFactoryId))

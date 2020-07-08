@@ -151,7 +151,7 @@ class TQExtDirectExtensionTest extends TestCase
         $container = new ContainerBuilder();
         $container->setParameter('kernel.debug', $debug);
         $container->setParameter('kernel.environment', $environment);
-        $container->setParameter('kernel.root_dir', $rootPath . '/app');
+        $container->setParameter('kernel.project_dir', $rootPath . '/app');
         $container->setParameter('kernel.cache_dir', $rootPath . '/cache');
         $container->setParameter('kernel.bundles', array());
         $container->set('router', $urlGenerator);

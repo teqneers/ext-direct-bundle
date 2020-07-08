@@ -1,5 +1,5 @@
 # ext-direct-bundle
-A Symfony 2 bundle to integrate Sencha Ext JS Ext.direct into a Symfony 2 application
+A Symfony bundle to integrate Sencha Ext JS Ext.direct into a Symfony application
 
 [![Build Status](https://travis-ci.org/teqneers/ext-direct-bundle.svg?branch=master)](https://travis-ci.org/teqneers/ext-direct-bundle)
 [![Code Coverage](https://scrutinizer-ci.com/g/teqneers/ext-direct-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/teqneers/ext-direct-bundle/?branch=master)

@@ -33,6 +33,7 @@ services:
 
     tq_extdirect.endpoint_manager:
         class: TQ\ExtDirect\Service\EndpointManager
+        public: true
 
     tq_extdirect.router.request_factory:
         class: TQ\ExtDirect\Router\RequestFactory

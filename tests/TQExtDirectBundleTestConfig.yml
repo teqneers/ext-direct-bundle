@@ -3,13 +3,14 @@ framework:
     validation:
         enabled: true
     router:
-        resource: "%kernel.root_dir%/TQExtDirectBundleTestRouting.yml"
+        resource: "%kernel.project_dir%/tests/TQExtDirectBundleTestRouting.yml"
         strict_requirements: ~
+        utf8: true
 
 tq_ext_direct:
     endpoints:
         api:
-            directories: ["%kernel.root_dir%/Services/Sub"]
+            directories: ["%kernel.project_dir%/tests/Services/Sub"]
 
 services:
     app.direct.test1:

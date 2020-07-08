@@ -50,9 +50,11 @@ class ApiController
      */
     public function apiAction($endpoint, Request $request)
     {
-        $session = $request->getSession();
-        if ($session && $session->isStarted()) {
-            $session->save();
+        if ($request->hasSession()) {
+            $session = $request->getSession();
+            if ($session && $session->isStarted()) {
+                $session->save();
+            }
         }
 
         if ($request->getMethod() !== Request::METHOD_GET) {

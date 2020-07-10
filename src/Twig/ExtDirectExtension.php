@@ -10,13 +10,15 @@
 namespace TQ\Bundle\ExtDirectBundle\Twig;
 
 use TQ\Bundle\ExtDirectBundle\Helper\TemplatingHelper;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * Class ExtDirectExtension
  *
  * @package TQ\Bundle\ExtDirectBundle\Twig
  */
-class ExtDirectExtension extends \Twig_Extension
+class ExtDirectExtension extends AbstractExtension
 {
     /**
      * @var TemplatingHelper
@@ -37,7 +39,7 @@ class ExtDirectExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction(
+            new TwigFunction(
                 'extDirectApiPath',
                 [$this->templatingHelper, 'getApiPath']
             ),

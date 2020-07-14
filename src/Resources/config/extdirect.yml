@@ -208,4 +208,4 @@ services:
         arguments:
             - "@tq_extdirect.router.request_logger"
         tags:
-            - { name: data_collector, id: tq_extdirect.request_collector, template: TQExtDirectBundle:data_collector:request_collector.html.twig }
+            - { name: data_collector, id: tq_extdirect.request_collector, template: "@TQExtDirect/data_collector/request_collector.html.twig" }

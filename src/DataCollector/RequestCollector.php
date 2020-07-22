@@ -37,7 +37,7 @@ class RequestCollector extends DataCollector
     /**
      * {@inheritdoc}
      */
-    public function collect(Request $request, Response $response, \Exception $exception = null)
+    public function collect(Request $request, Response $response, \Throwable $exception = null)
     {
         $extDirectRequest  = $this->requestLogger->getRequest(false);
         $extDirectResponse = $this->requestLogger->getResponse(false);
@@ -59,15 +59,9 @@ class RequestCollector extends DataCollector
                 $requestCount = count($extDirectRequest);
             }
 
-            $hasCloneVar = method_exists($this, 'cloneVar');
             foreach ($extDirectRequest as $i => $r) {
-                if ($hasCloneVar) {
-                    $data        = $this->cloneVar($r['data']);
-                    $extResponse = $this->cloneVar($extDirectResponse[$i]);
-                } else {
-                    $data        = $this->varToString($r['data']);
-                    $extResponse = $this->varToString($extDirectResponse[$i]);
-                }
+                $data = $this->cloneVar($r['data']);
+                $extResponse = $this->cloneVar($extDirectResponse[$i]);
 
                 $requests[] = array_merge($r, ['data' => $data, 'response' => $extResponse]);
             }

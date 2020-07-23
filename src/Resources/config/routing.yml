@@ -10,4 +10,4 @@ tq_extdirect_router:
     path: /{endpoint}/router
     methods: [POST]
     defaults:
-        _controller: tq_extdirect.ext_direct_router_controller:routerAction
+        _controller: tq_extdirect.ext_direct_router_controller::routerAction

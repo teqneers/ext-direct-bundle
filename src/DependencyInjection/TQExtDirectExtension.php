@@ -10,6 +10,7 @@
 namespace TQ\Bundle\ExtDirectBundle\DependencyInjection;
 
 
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -242,7 +243,7 @@ class TQExtDirectExtension extends Extension
     }
 
     /**
-     * {@inheritdoc}
+     * @return ConfigurationInterface|null
      */
     public function getConfiguration(array $config, ContainerBuilder $container)
     {

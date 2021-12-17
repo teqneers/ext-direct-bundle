@@ -13,6 +13,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use TQ\Bundle\ExtDirectBundle\Controller\ApiController;
 use TQ\Bundle\ExtDirectBundle\Controller\RouterController;
@@ -173,7 +174,7 @@ OUT
 class AppKernel extends Kernel
 {
     /**
-     * {@inheritdoc}
+     * @return iterable<mixed, BundleInterface>
      */
     public function registerBundles()
     {
@@ -193,7 +194,7 @@ class AppKernel extends Kernel
     }
 
     /**
-     * {@inheritdoc}
+     * @return string
      */
     public function getCacheDir()
     {
@@ -201,7 +202,7 @@ class AppKernel extends Kernel
     }
 
     /**
-     * {@inheritdoc}
+     * @return string
      */
     public function getLogDir()
     {

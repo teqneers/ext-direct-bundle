@@ -2,6 +2,8 @@
 
 A Symfony bundle to integrate Sencha Ext JS Ext.direct into a Symfony application
 
+[![Build Status](https://github.com/teqneers/ext-direct-bundle/actions/workflows/php.yml/badge.svg)](https://github.com/teqneers/ext-direct-bundle/actions/workflows/php.yml)
+
 ## Installation
 
 You can install this bundle using composer

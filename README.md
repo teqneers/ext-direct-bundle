@@ -1,11 +1,6 @@
 # ext-direct-bundle
 A Symfony bundle to integrate Sencha Ext JS Ext.direct into a Symfony application
 
-[![Build Status](https://travis-ci.org/teqneers/ext-direct-bundle.svg?branch=master)](https://travis-ci.org/teqneers/ext-direct-bundle)
-[![Code Coverage](https://scrutinizer-ci.com/g/teqneers/ext-direct-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/teqneers/ext-direct-bundle/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/teqneers/ext-direct-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/teqneers/ext-direct-bundle/?branch=master)
-[![Dependency Status](https://www.versioneye.com/user/projects/55b4ba87643533001c000573/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55b4ba87643533001c000573)
-
 ## Installation
 
 You can install this bundle using composer

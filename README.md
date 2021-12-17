@@ -1,4 +1,5 @@
 # ext-direct-bundle
+
 A Symfony bundle to integrate Sencha Ext JS Ext.direct into a Symfony application
 
 ## Installation
@@ -45,10 +46,10 @@ The *ext-direct-bundle* requires at least one endpoint to be configured.
                 directories:          []
 
 `auto_discover` enables auto-discovering service classes in bundles available to the application. If paired with
-`all_bundles` all available bundles are checked, otherwise only bundles mentioned in the `bundles` array are
-checked. For bundles it is required to place service classes into an `ExtDirect` directory inside the bundle root
-directory. Additionally (or only - if `auto_discover` is disabled) individual `directories` can be set to be included
-in the service discovery process. Services are discovered recursively starting with each configured directory.
+`all_bundles` all available bundles are checked, otherwise only bundles mentioned in the `bundles` array are checked.
+For bundles it is required to place service classes into an `ExtDirect` directory inside the bundle root directory.
+Additionally (or only - if `auto_discover` is disabled) individual `directories` can be set to be included in the
+service discovery process. Services are discovered recursively starting with each configured directory.
 
 Because the bundle provides its own controller to serve the API description and handle *Ext.direct* reqeusts, you also
 need to configure your routing to include the bundle routes at a given prefix. Edit your `app/config/routing.yml`:
@@ -97,20 +98,15 @@ The MIT License (MIT)
 
 Copyright (c) 2015 TEQneers GmbH & Co. KG
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -33,7 +33,7 @@
         "symfony/http-kernel": "~3.0 || ~4.0 || ~5.0",
         "symfony/routing": "~3.0 || ~4.0 || ~5.0",
         "symfony/yaml": "~3.0 || ~4.0 || ~5.0",
-        "teqneers/ext-direct": "3.1.x-dev",
+        "teqneers/ext-direct": "4.0.x-dev",
         "twig/twig": "~1.24 || ~2.0 || ~3.0"
     },
     "require-dev": {
@@ -45,7 +45,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.1.x-dev"
+            "dev-master": "4.0.x-dev"
         }
     }
 }

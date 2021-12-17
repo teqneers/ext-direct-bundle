@@ -42,10 +42,5 @@
         "symfony/phpunit-bridge": "~5.0",
         "symfony/security-bundle": "~3.0 || ~4.0 || ~5.0",
         "symfony/templating": "~3.0 || ~4.0 || ~5.0"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "3.1.x-dev"
-        }
     }
 }

@@ -2,10 +2,20 @@ framework:
     secret: "Three can keep a secret, if two of them are dead."
     validation:
         enabled: true
+        email_validation_mode: html5
     router:
         resource: "%kernel.project_dir%/tests/TQExtDirectBundleTestRouting.yml"
         strict_requirements: ~
         utf8: true
+
+    http_method_override: false
+    handle_all_throwables: true
+
+    php_errors:
+        log: true
+
+    annotations:
+        enabled: false
 
 tq_ext_direct:
     endpoints:
@@ -20,3 +30,6 @@ services:
         class: TQ\Bundle\ExtDirectBundle\Tests\Services\Service1
         tags:
             - { name: tq_extdirect.service, endpoint: api }
+
+    Doctrine\Common\Annotations\AnnotationReader:
+    annotation_reader: '@Doctrine\Common\Annotations\AnnotationReader'

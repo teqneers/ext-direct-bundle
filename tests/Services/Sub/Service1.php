@@ -18,16 +18,16 @@ use TQ\ExtDirect\Annotation as Direct;
  *
  * @Direct\Action("app.direct.test1")
  */
+#[Direct\Action("app.direct.test1")]
 class Service1
 {
     /**
      * @Direct\Method()
      * @Direct\Parameter("a", { @Assert\NotNull(), @Assert\Type("string") })
-     *
-     * @param string $a
-     * @return string
      */
-    public function methodA($a)
+    #[Direct\Method()]
+    #[Direct\Parameter("a", [ new Assert\NotNull(), new Assert\Type("string") ])]
+    public function methodA(string $a): string
     {
         return $a;
     }

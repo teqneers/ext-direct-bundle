@@ -24,7 +24,7 @@ class ValidateSecurityPass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->hasDefinition('tq_extdirect.router.authorization_checker')) {
             // authorization listener not enabled or expression language not available

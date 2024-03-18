@@ -26,22 +26,23 @@
         }
     },
     "require": {
-        "php": "8.0.*|8.1.*",
-        "jms/serializer-bundle": "~4.0",
-        "symfony/config": "~5.0",
-        "symfony/dependency-injection": "~5.0",
-        "symfony/http-kernel": "~5.0",
-        "symfony/routing": "~5.0",
-        "symfony/yaml": "~5.0",
+        "php": "^8.0",
+        "jms/serializer-bundle": "^5.4",
+        "symfony/config": "6.4.*",
+        "symfony/dependency-injection": "6.4.*",
+        "symfony/http-kernel": "6.4.*",
+        "symfony/routing": "6.4.*",
+        "symfony/yaml": "6.4.*",
         "teqneers/ext-direct": "^5.0",
         "twig/twig": "~3.3"
     },
     "require-dev": {
+        "koriym/attributes": "^1.0",
         "phpunit/phpunit": "^9.5",
-        "symfony/framework-bundle": "~5.0",
-        "symfony/phpunit-bridge": "~5.0",
-        "symfony/security-bundle": "~5.0",
-        "symfony/templating": "~5.0"
+        "symfony/framework-bundle": "6.4.*",
+        "symfony/phpunit-bridge": "6.4.*",
+        "symfony/security-bundle": "6.4.*",
+        "symfony/templating": "6.4.*"
     },
     "extra": {
         "branch-alias": {

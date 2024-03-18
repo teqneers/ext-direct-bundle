@@ -44,7 +44,7 @@ class RouterController
      */
     public function routerAction($endpoint, Request $request)
     {
-        $request->setRequestFormat($request->getContentType());
+        $request->setRequestFormat($request->getContentTypeFormat());
 
         if ($request->getMethod() !== Request::METHOD_POST) {
             throw new MethodNotAllowedHttpException(array(Request::METHOD_POST));

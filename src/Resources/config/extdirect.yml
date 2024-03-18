@@ -2,6 +2,9 @@ parameters:
     tq_extdirect.debug: false
 
 services:
+    Doctrine\Common\Annotations\AnnotationReader:
+    annotation_reader: '@Doctrine\Common\Annotations\AnnotationReader'
+
     tq_extdirect.ext_direct_api_controller:
         class: TQ\Bundle\ExtDirectBundle\Controller\ApiController
         public: true

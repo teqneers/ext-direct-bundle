@@ -173,10 +173,7 @@ OUT
 
 class AppKernel extends Kernel
 {
-    /**
-     * @return iterable<mixed, BundleInterface>
-     */
-    public function registerBundles()
+    public function registerBundles(): \Traversable|array
     {
         return array(
             new FrameworkBundle(),
@@ -188,23 +185,17 @@ class AppKernel extends Kernel
     /**
      * {@inheritdoc}
      */
-    public function registerContainerConfiguration(LoaderInterface $loader)
+    public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load(__DIR__ . '/TQExtDirectBundleTestConfig.yml');
     }
 
-    /**
-     * @return string
-     */
-    public function getCacheDir()
+    public function getCacheDir(): string
     {
         return sys_get_temp_dir() . '/ext-direct-bundle/cache';
     }
 
-    /**
-     * @return string
-     */
-    public function getLogDir()
+    public function getLogDir(): string
     {
         return sys_get_temp_dir() . '/ext-direct-bundle/log';
     }

@@ -21,7 +21,7 @@ class AddExtDirectServicePass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         $tagName         = 'tq_extdirect.service';
         $defaultEndpoint = $container->getParameter('tq_extdirect.endpoint.default');

@@ -37,6 +37,7 @@
         "twig/twig": "~3.3"
     },
     "require-dev": {
+        "koriym/attributes": "^1.0",
         "phpunit/phpunit": "^9.5",
         "symfony/framework-bundle": "6.4.*",
         "symfony/phpunit-bridge": "6.4.*",

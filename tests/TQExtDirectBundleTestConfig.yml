@@ -30,3 +30,6 @@ services:
         class: TQ\Bundle\ExtDirectBundle\Tests\Services\Service1
         tags:
             - { name: tq_extdirect.service, endpoint: api }
+
+    Doctrine\Common\Annotations\AnnotationReader:
+    annotation_reader: '@Doctrine\Common\Annotations\AnnotationReader'
